@@ -10,6 +10,7 @@ const LandingPageComponent = (props) => {
   return (
     <div className='parent-div'>
       <img src={Logo} alt='Logo' className='logo-landing-page' />
+      <button className='landing-btn'>Connect to Spotify</button>
     </div>
   )
 }
