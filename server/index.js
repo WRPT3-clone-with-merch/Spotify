@@ -1,17 +1,28 @@
-require("dotenv").config();
+require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
-const querystring = require('querystring');
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } = process.env;
+const massive = require("massive");
+const session = require("express-session");
+const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING } = process.env;
 
 const app = express();
 
-const { login, callback, refreshToken } = require('./controllers/auth');
+massive({
+	connectionString: CONNECTION_STRING,
+	ssl: { rejectUnauthorized: false },
+}).then((db) => {
+	app.set("db", db);
+	console.log("db connected");
+}).catch(err => console.log(err));
 
+app.use(
+	session({
+		resave: true,
+		saveUninitialized: false,
+		secret: SESSION_SECRET,
+		cookie: { maxAge:  60000 * 60 * 24 * 90}
+}));
 app.use(express.json());
 
-app.get('/login', login)
-app.get('/callback', callback)
-app.get('/refresh_token', refreshToken)
+// app.get('/api/')
 
-app.listen(8888, () => console.log('Listening on 8888'))
+app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`))
