@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import SideBar from '../SideBar/SideBar';
 import TopNav from '../TopNav/TopNav';
 import axios from 'axios';
-import './Merch.css';
+import './CreatePlaylist.css';
 
-const MerchComponent = (props) => {
+const CreatePlaylistComponent = (props) => {
 
   return (
     <div>
@@ -14,4 +14,4 @@ const MerchComponent = (props) => {
   )
 }
 
-export default MerchComponent;
+export default CreatePlaylistComponent;

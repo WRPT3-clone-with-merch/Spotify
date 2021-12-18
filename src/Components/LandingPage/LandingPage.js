@@ -19,7 +19,7 @@ const LandingPageComponent = (props) => {
     <div className='parent-div'>
       <img src={Logo} alt='Logo' className='logo-landing-page' />
       <Link to='/homepage'>
-      <button className='landing-btn'>Connect to Spotify</button>
+      <button className='landing-btn' onClick={handleLogin}>Connect to Spotify</button>
       </Link>
     </div>
   )

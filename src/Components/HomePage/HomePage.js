@@ -8,7 +8,8 @@ const HomePageComponent = (props) => {
 
   return (
     <div>
-      {SideBar}
+      <SideBar />
+      <TopNav />
     </div>
   )
 }

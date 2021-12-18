@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SideBar from '../SideBar/SideBar';
-import TopNav from '../TopNav/TopNav';
+import TopNavLibrary from '../TopNav/TopNavLibrary';
 import axios from 'axios';
 import './Library.css';
 
@@ -8,7 +8,8 @@ const LibraryComponent = (props) => {
 
   return (
     <div>
-
+      <SideBar />
+      <TopNavLibrary />
     </div>
   )
 }
