@@ -24,6 +24,7 @@ app.use(
 }));
 app.use(express.json());
 
-// app.get('/api/')
+// Tracks Endpoints
+app.get('/api/tracks/id')
 
 app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`))
