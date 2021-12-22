@@ -7,6 +7,10 @@ import Merch from './Components/Merch/Merch';
 import Search from './Components/Search/Search';
 import LikedSongs from './Components/LikedSongs/LikedSongs';
 import CreatePlaylist from './Components/CreatePlaylist/CreatePlaylist';
+import Artists from './Components/Artists/Artists';
+import Albums from './Components/Albums/Albums';
+import Playlists from './Components/Playlists/Playlists';
+import Podcasts from './Components/Podcasts/Podcasts';
 
 export default (
   <BrowserRouter>
@@ -17,5 +21,9 @@ export default (
     <Route path='/search' component={Search} />
     <Route path='/liked-songs' component={LikedSongs} />
     <Route path='/create-playlist' component={CreatePlaylist} />
+    <Route path='/artists' component={Artists} />
+    <Route path='/albums' component={Albums} />
+    <Route path='/playlists' component={Playlists} />
+    <Route path='/podcasts' component={Podcasts} />
   </BrowserRouter>
 );
