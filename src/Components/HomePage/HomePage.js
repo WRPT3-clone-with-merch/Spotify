@@ -3,6 +3,7 @@ import SideBar from '../SideBar/SideBar';
 import TopNav from '../TopNav/TopNav';
 import axios from 'axios';
 import './HomePage.css';
+// import MusicPlayer from '../MusicPlayer/MusicPlayer';
 
 const HomePageComponent = (props) => {
 
@@ -10,6 +11,7 @@ const HomePageComponent = (props) => {
     <div>
       <SideBar />
       <TopNav />
+      {/* <MusicPlayer /> */}
     </div>
   )
 }
