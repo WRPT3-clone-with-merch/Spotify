@@ -25,7 +25,9 @@ app.use(
 		secret: SESSION_SECRET,
 		cookie: { maxAge:  60000 * 60 * 24 * 90}
 }));
+
 app.use(express.json());
+
 
 var generateRandomString = function (length) {
 	var text = '';
@@ -74,11 +76,18 @@ app.get('/auth/callback', (req, res) => {
 
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
-      var access_token = body.access_token;
+			req.session.token = body.access_token;
       res.redirect('http://localhost:3000/homepage');
     }
   });
 });
+
+app.get('/auth/token', (req, res) => {
+  res.json(
+     {
+        access_token: req.session.token,
+     })
+})
 
 
 app.post('/api/token', (req, res) => {
