@@ -24,8 +24,6 @@ const Playlists = (props) => {
     }
   }, [token]);
 
-  console.log(list);
-
   const playlistMap = list.map((list) => {
     return (
       <div className="playlist-preview" key={list.id}>
