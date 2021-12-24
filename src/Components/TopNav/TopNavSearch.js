@@ -6,7 +6,7 @@ import { MdOutlineArrowForwardIos } from 'react-icons/md';
 
 const TopNavSearchComponent = (props) => {
 
-  const {searchInput, setSearchInput} = useState('');
+  const [searchInput, setSearchInput] = useState('');
 
   const style = { color: 'white' };
   const buttonStyle = { backgroundColor: 'black', borderRadius: '50%', border: '1px solid black', marginLeft: '20px', width: '30px', height: '30px' };
