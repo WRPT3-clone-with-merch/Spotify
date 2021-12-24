@@ -1,6 +1,6 @@
-.playlists {
+/* .playlists {
   color: white;
-}
+} */
 
 .playlist-container {
   color: white;
@@ -19,6 +19,8 @@
   height: 30vh;
   width: 13vw;
   border-radius: 7px;
+  text-decoration: none;
+  color: white;
 }
 
 .playlist-image {
@@ -28,8 +30,4 @@
 
 .playlist-description {
   font-size: smaller;
-}
-
-.playlist-header {
-  color: white;
 }

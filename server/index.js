@@ -92,7 +92,7 @@ app.get("/auth/callback", (req, res) => {
 });
 
 app.get("/auth/token", (req, res) => {
-  res.json({ access_token: req.session.token });
+  res.json({ access_token: req.session.token })
 });
 
 app.post("/api/token", (req, res) => {
