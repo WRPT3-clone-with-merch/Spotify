@@ -6,8 +6,13 @@ export const useToken = () => {
 
   useEffect(() => {
     async function getToken() {
-      const response = await axios.get("/auth/token");
-      setToken(response.data.access_token);
+      try {
+        const response = await axios.get("/auth/token");
+        setToken(response.data.access_token);
+      }
+      catch {
+        return;
+      }
     }
 
     getToken();

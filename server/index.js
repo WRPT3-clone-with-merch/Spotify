@@ -93,11 +93,11 @@ app.get("/auth/callback", (req, res) => {
 });
 
 app.get('/auth/token', (req, res) => {
-  res.json(
+  if(req.session.token) {res.json(
      {
         access_token: req.session.token,
-     })
-})
+     })} else {res.sendStatus(403)}
+});
 
 
 app.post("/api/token", (req, res) => {
