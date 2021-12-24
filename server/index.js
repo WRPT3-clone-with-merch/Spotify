@@ -37,7 +37,7 @@ var generateRandomString = function (length) {
 	}
 	return text;
 };
-// app.get('/api/')
+
 app.get('/auth/login', (req, res) => {
 	var scope = "streaming \
 	user-read-email \
@@ -81,12 +81,15 @@ app.get('/auth/callback', (req, res) => {
   });
 });
 
+app.get('/auth/token', (req, res) => {   
+  res.json({
+  access_token: access_token})})
 
 app.post('/api/token', (req, res) => {
 
   var scope = "streaming \
-               user-read-email \
-               user-read-private"
+              user-read-email \
+              user-read-private"
 
   var state = generateRandomString(16);
 
@@ -101,5 +104,7 @@ app.post('/api/token', (req, res) => {
 
   res.redirect('https://accounts.spotify.com/authorize/?' + auth_query_parameters.toString());
 })
+
+app.get('/https://api.spotify.com/v1/tracks/:id')
 
 app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`))

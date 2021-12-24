@@ -2,6 +2,7 @@
   "name": "applify",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -44,7 +45,6 @@
     ]
   },
   "devDependencies": {
-    "http-proxy-middleware": "^2.0.1",
     "request": "^2.88.2"
   }
 }
