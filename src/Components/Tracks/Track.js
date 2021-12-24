@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Track() {
-	let res = axios.get(`https://api.spotify.com/v1/tracks/{id}`)
+const Track = (props) => {
+	const [track, setTrack] = useState('')
 
+	const getTrack = axios.get(`https://api.spotify.com/v1/tracks/{id}`)
+		.then
 
 	return (
 		<div>
-			{	console.log(res.data) }
+			<input>
+			</input>
 		</div>
 	)
 }
+
+export default Track
