@@ -21,14 +21,15 @@ massive({
   .catch((err) => console.log(err));
 
 app.use(
-  session({
-    resave: true,
-    saveUninitialized: false,
-    secret: SESSION_SECRET,
-    cookie: { maxAge: 60000 * 60 * 24 * 90 },
-  })
-);
+	session({
+		resave: true,
+		saveUninitialized: false,
+		secret: SESSION_SECRET,
+		cookie: { maxAge:  60000 * 60 * 24 * 90}
+}));
+
 app.use(express.json());
+
 
 var generateRandomString = function (length) {
   var text = "";
@@ -85,15 +86,19 @@ app.get("/auth/callback", (req, res) => {
 
   request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      req.session.token = body.access_token;
-      res.redirect("http://localhost:3000/homepage");
+			req.session.token = body.access_token;
+      res.redirect('http://localhost:3000/homepage');
     }
   });
 });
 
-app.get("/auth/token", (req, res) => {
-  res.json({ access_token: req.session.token })
+app.get('/auth/token', (req, res) => {
+  if(req.session.token) {res.json(
+     {
+        access_token: req.session.token,
+     })} else {res.sendStatus(403)}
 });
+
 
 app.post("/api/token", (req, res) => {
   var scope =
