@@ -26,7 +26,7 @@ const LandingPageComponent = (props) => {
   }, []);
 
   const handleLogin = () => {
-    window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_REDIRECT_URL}&show_dialog=true`;
+    window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=streaming%20playlist-read-private&show_dialog=true`;
   };
 
   return (
@@ -37,7 +37,7 @@ const LandingPageComponent = (props) => {
       </Link> </>
       : <WebPlayback token={token} /> } 
     </div>
-  )
+  );
 };
 
 export default LandingPageComponent;

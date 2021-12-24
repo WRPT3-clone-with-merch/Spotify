@@ -1,9 +1,9 @@
-require('dotenv').config();
-const express = require('express');
+require("dotenv").config();
+const express = require("express");
 const massive = require("massive");
 const session = require("express-session");
 const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING } = process.env;
-const request = require('request');
+const request = require("request");
 
 const app = express();
 
@@ -11,12 +11,14 @@ const spotify_client_id = process.env.REACT_APP_CLIENT_ID;
 const spotify_client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
 massive({
-	connectionString: CONNECTION_STRING,
-	ssl: { rejectUnauthorized: false },
-}).then((db) => {
-	app.set("db", db);
-	console.log("db connected");
-}).catch(err => console.log(err));
+  connectionString: CONNECTION_STRING,
+  ssl: { rejectUnauthorized: false },
+})
+  .then((db) => {
+    app.set("db", db);
+    console.log("db connected");
+  })
+  .catch((err) => console.log(err));
 
 app.use(
 	session({
@@ -30,51 +32,59 @@ app.use(express.json());
 
 
 var generateRandomString = function (length) {
-	var text = '';
-	var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var text = "";
+  var possible =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-	for (var i = 0; i < length; i++) {
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
-	}
-	return text;
+  for (var i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
 };
-// app.get('/api/')
-app.get('/auth/login', (req, res) => {
-	var scope = "streaming \
+
+app.get("/auth/login", (req, res) => {
+  var scope = "streaming \
 	user-read-email \
-	user-read-private"
+	user-read-private";
 
-var state = generateRandomString(16);
+  var state = generateRandomString(16);
 
-var auth_query_parameters = new URLSearchParams({
-response_type: "code",
-client_id: spotify_client_id,
-scope: scope,
-redirect_uri: "http://localhost:5000/auth/callback",
-state: state
-})
+  var auth_query_parameters = new URLSearchParams({
+    response_type: "code",
+    client_id: spotify_client_id,
+    scope: scope,
+    redirect_uri: "http://localhost:5000/auth/callback",
+    state: state,
+  });
 
-res.redirect('https://accounts.spotify.com/authorize/?' + auth_query_parameters.toString());
+  res.redirect(
+    "https://accounts.spotify.com/authorize/?" +
+      auth_query_parameters.toString()
+  );
 });
 
-app.get('/auth/callback', (req, res) => {
+app.get("/auth/callback", (req, res) => {
   var code = req.query.code;
 
   var authOptions = {
-    url: 'https://accounts.spotify.com/api/token',
+    url: "https://accounts.spotify.com/api/token",
     form: {
       code: code,
       redirect_uri: "http://localhost:5000/auth/callback",
-      grant_type: 'authorization_code'
+      grant_type: "authorization_code",
     },
     headers: {
-      'Authorization': 'Basic ' + (Buffer.from(spotify_client_id + ':' + spotify_client_secret).toString('base64')),
-      'Content-Type' : 'application/x-www-form-urlencoded'
+      Authorization:
+        "Basic " +
+        Buffer.from(spotify_client_id + ":" + spotify_client_secret).toString(
+          "base64"
+        ),
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    json: true
+    json: true,
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
 			req.session.token = body.access_token;
       res.redirect('http://localhost:3000/homepage');
@@ -90,11 +100,11 @@ app.get('/auth/token', (req, res) => {
 })
 
 
-app.post('/api/token', (req, res) => {
-
-  var scope = "streaming \
-               user-read-email \
-               user-read-private"
+app.post("/api/token", (req, res) => {
+  var scope =
+    "streaming \
+    user-read-email \
+    user-read-private";
 
   var state = generateRandomString(16);
 
@@ -104,10 +114,13 @@ app.post('/api/token', (req, res) => {
     scope: scope,
     redirect_uri: "http://localhost:5000/auth/callback",
     state: state,
-		grant_type: authorization_code,
-  })
+    grant_type: authorization_code,
+  });
 
-  res.redirect('https://accounts.spotify.com/authorize/?' + auth_query_parameters.toString());
-})
+  res.redirect(
+    "https://accounts.spotify.com/authorize/?" +
+      auth_query_parameters.toString()
+  );
+});
 
-app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`))
+app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`));
