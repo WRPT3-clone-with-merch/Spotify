@@ -25,10 +25,10 @@ const Playlists = (props) => {
     }
   }, [token]);
 
-  const playlistMap = list.map((list, index) => {
+  const playlistMap = list.map((list) => {
     return (
       <Link to={`/playlist/${list.id}`} className="playlist-preview">
-        <div key={index}>
+        <div key={list.id}>
           <img className="playlist-image" src={list.images[0].url} alt="playlist" />
           <h3>{list.name}</h3>
           <p className="playlist-description">{list.description}</p>

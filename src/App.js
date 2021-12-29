@@ -4,7 +4,6 @@ import { useToken } from "./utils";
 import "./App.css";
 import WebPlayback from "./Components/WebPlayback/WebPlayback";
 import axios from 'axios';
-import { useToken } from './utils';
 
 
 const App = (props) => {
@@ -14,7 +13,7 @@ const App = (props) => {
   return (
     <div className="App">
       {routes}
-      {token ? <WebPlayback /> : null}
+      {token ? <WebPlayback token={token} /> : null}
     </div>
   );
 }

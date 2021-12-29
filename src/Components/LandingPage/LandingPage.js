@@ -26,16 +26,15 @@ const LandingPageComponent = (props) => {
   }, []);
 
   const handleLogin = () => {
-    window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=streaming%20playlist-read-private&show_dialog=true`;
+    window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=streaming%20playlist-read-private%20user-follow-modify%20user-follow-read&show_dialog=true`;
   };
 
   return (
     <div className='parent-div'>
-      { (token === ' ') ? <><img src={Logo} alt='Logo' className='logo-landing-page' />
+      <img src={Logo} alt='Logo' className='logo-landing-page' />
       <Link to='/homepage'>
       <button className='landing-btn' onClick={handleLogin}>Connect to Spotify</button>
-      </Link> </>
-      : <WebPlayback token={token} /> } 
+      </Link>
     </div>
   );
 };
