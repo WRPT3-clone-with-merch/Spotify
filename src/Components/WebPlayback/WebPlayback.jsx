@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 const track = {
   name: "",
@@ -11,7 +12,6 @@ const track = {
 function WebPlayback(props) {
   const [player, setPlayer] = useState(undefined);
   const [is_paused, setPaused] = useState(false);
-  console.log(is_paused);
   const [is_active, setActive] = useState(false);
   const [current_track, setTrack] = useState(track);
 
@@ -23,6 +23,9 @@ function WebPlayback(props) {
     document.body.appendChild(script);
 
     window.onSpotifyWebPlaybackSDKReady = () => {
+
+
+
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
         getOAuthToken: (cb) => {
@@ -67,7 +70,7 @@ function WebPlayback(props) {
 
       player.connect();
     };
-  }, []);
+  }, [props.token]);
 
   return (
     <>

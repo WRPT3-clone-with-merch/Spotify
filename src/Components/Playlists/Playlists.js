@@ -24,12 +24,14 @@ const Playlists = (props) => {
     }
   }, [token]);
 
+  console.log(list);
+
   const playlistMap = list.map((list) => {
     return (
       <div className="playlist-preview" key={list.id}>
         <img className="playlist-image" src={list.images[0].url} />
         <h3>{list.name}</h3>
-        <p className="playlist-description">{list.description}</p>
+        {/* <p className="playlist-description">{list.description}</p> */}
       </div>
     );
   });
