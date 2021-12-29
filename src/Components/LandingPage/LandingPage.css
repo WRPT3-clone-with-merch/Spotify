@@ -12,6 +12,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   height: 300px;
+  align-items: center;
 }
 
 .logo-landing-page {
