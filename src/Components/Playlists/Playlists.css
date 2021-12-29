@@ -1,12 +1,8 @@
-.playlists {
-  color: white;
-}
-
 .playlist-container {
   color: white;
   position: absolute;
   top: 7%;
-  left: 20.2%;
+  left: 20%;
   display: flex;
   flex-wrap: wrap;
   background-color: #252422;
@@ -17,8 +13,12 @@
   margin: 1vw;
   background-color: #1a1a1a;
   height: 30vh;
-  width: 13vw;
+  width: 12vw;
   border-radius: 7px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .playlist-image {
@@ -28,8 +28,8 @@
 
 .playlist-description {
   font-size: smaller;
-}
-
-.playlist-header {
-  color: white;
+  width: 10vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

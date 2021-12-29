@@ -10,6 +10,7 @@ import CreatePlaylist from './Components/CreatePlaylist/CreatePlaylist';
 import Artists from './Components/Artists/Artists';
 import Albums from './Components/Albums/Albums';
 import Playlists from './Components/Playlists/Playlists';
+import PlaylistInfo from './Components/Playlists/PlaylistInfo';
 import Podcasts from './Components/Podcasts/Podcasts';
 
 export default (
@@ -24,6 +25,7 @@ export default (
     <Route path='/artists' component={Artists} />
     <Route path='/albums' component={Albums} />
     <Route path='/playlists' component={Playlists} />
+    <Route path='/playlist/:id' component={PlaylistInfo} />
     <Route path='/podcasts' component={Podcasts} />
   </BrowserRouter>
 );
