@@ -25,6 +25,8 @@ const Playlists = (props) => {
     }
   }, [token]);
 
+  console.log(list);
+
   const playlistMap = list.map((list) => {
     return (
       <Link to={`/playlist/${list.id}`} className="playlist-preview">

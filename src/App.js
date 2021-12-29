@@ -3,7 +3,7 @@ import routes from "./routes";
 import { useToken } from "./utils";
 import "./App.css";
 import WebPlayback from "./Components/WebPlayback/WebPlayback";
-import axios from 'axios';
+import { useToken } from './utils';
 
 
 const App = (props) => {

@@ -1,0 +1,15 @@
+.artist-container {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  width: 60vw;
+  flex-wrap: wrap;
+  padding-top: 30%;
+  height: 600px;
+  justify-content: space-between;
+}
+
+.artist-name {
+  display: flex;
+  justify-content: center;
+}
