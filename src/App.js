@@ -13,7 +13,7 @@ const App = (props) => {
   return (
     <div className="App">
       {routes}
-      {token ? <WebPlayback /> : null}
+      {token ? <WebPlayback token={token}/> : null}
     </div>
   );
 }

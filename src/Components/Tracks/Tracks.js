@@ -2,27 +2,26 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useToken } from "../../utils";
 
-const Track = (props) => {
-	const [track, setTrack] = useState([])
+const Tracks = (props) => {
+	const [tracks, setTracks] = useState([])
 	const token = useToken();
 
 	useEffect(() => {
 		try {
-		axios.get(`https://api.spotify.com/v1/tracks/${id}`, {
+		axios.get(`https://api.spotify.com/v1/tracks`, {
 			params: {market: US},
 			headers: {Authorization: `Bearer ${token}`}
-		}).then(({data}) => setTrack({
-			album: data.album.name,
-			artist: data.artists[6],
-			track: data.name
+		}).then(({data}) => setTracks({
+			album: data.tracks[0].name,
+			artist: data.tracks[1][6],
+			track: data.tracks[13]
 		}))}
 		catch (err) {
       console.log(err);
     }
 }, [token]);
-console.log(track)
 
-track.map(track => {
+tracks.map(track => {
 	return (
 		<div key={track.id}>
 			<img src={track.images[0].url}/>
@@ -35,7 +34,7 @@ track.map(track => {
 return (
 	<div className="playlists">
 		<div className="playlist-container">
-			{track}
+			{tracks}
 			<SideBar />
 			<TopNavLibrary />
 		</div>
@@ -43,4 +42,4 @@ return (
 );
 }
 
-export default Track
+export default Tracks

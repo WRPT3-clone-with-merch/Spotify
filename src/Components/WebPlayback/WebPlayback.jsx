@@ -67,7 +67,7 @@ function WebPlayback(props) {
 
       player.connect();
     };
-  }, []);
+  }, [props.token]);
 
   return (
     <>
