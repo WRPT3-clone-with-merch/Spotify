@@ -3,7 +3,7 @@ import axios from 'axios';
 import './TopNav.css';
 import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import { MdOutlineArrowForwardIos } from 'react-icons/md';
-import { useToken } from "../../utils";
+import { useToken, SpotifyURL } from "../../utils";
 
 const TopNavComponent = (props) => {
   const [user, setUser] = useState([]);
@@ -13,7 +13,7 @@ const TopNavComponent = (props) => {
 
   useEffect(() => {
     try {
-      axios.get("https://api.spotify.com/v1/me/", {
+      axios.get(`${SpotifyURL}/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
