@@ -1,0 +1,13 @@
+.following-albums-container {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.following-albums {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

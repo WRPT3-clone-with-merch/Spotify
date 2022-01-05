@@ -1,0 +1,82 @@
+.playlist-info {
+  background-color: #252422;
+  color: white;
+}
+
+.column-titles {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  display: flex;
+  flex-direction: row;
+  width: 75vw;
+  justify-content: space-between;
+  list-style: none;
+  margin-bottom: 5vh;
+  margin-left: -1vw;
+}
+
+.track-container {
+  background-color: #252422;
+  display: flex;
+  width: 77vw;
+  justify-content: space-between;
+  padding: 1%;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.track-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-image-main {
+  display: flex;
+  flex-direction: row;
+  width: 25vw;
+  line-height: 0;
+  margin-left: -7vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.playlist {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#track-title {
+  width: 15vw;
+  margin-left: -5vw; 
+}
+
+#album-title {
+  width: 15vw;
+}
+
+#date-title {
+  width: 15vw;
+}
+
+.list-album-cover {
+  margin-right: 1vw;
+}
+
+.list-album-name {
+  width: 15vw;
+  margin-left: -3vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.list-album-duration {
+  width: 5vw;
+}

@@ -3,6 +3,7 @@ import SideBar from "../SideBar/SideBar";
 import TopNavLibrary from "../TopNav/TopNavLibrary";
 import axios from "axios";
 import { useToken } from "../../utils";
+import { Link } from "react-router-dom";
 import "./Playlists.css";
 
 const Playlists = (props) => {
@@ -24,13 +25,17 @@ const Playlists = (props) => {
     }
   }, [token]);
 
+  console.log(list);
+
   const playlistMap = list.map((list) => {
     return (
-      <div className="playlist-preview" key={list.id}>
-        <img className="playlist-image" src={list.images[0].url} />
-        <h3>{list.name}</h3>
-        <p className="playlist-description">{list.description}</p>
-      </div>
+      <Link to={`/playlist/${list.id}`} className="playlist-preview">
+        <div key={list.id}>
+          <img className="playlist-image" src={list.images[0].url} alt="playlist" />
+          <h3>{list.name}</h3>
+          <p className="playlist-description">{list.description}</p>
+        </div>
+      </Link>
     );
   });
 

@@ -33,6 +33,7 @@ const SideBarComponent = (props) => {
         <button className='liked-songs-btn side-bar-btn'>Liked Songs</button>
       </Link>
       </div>
+      
     </div>
   )
 }
