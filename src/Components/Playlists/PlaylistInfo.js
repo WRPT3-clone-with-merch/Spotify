@@ -7,24 +7,35 @@ import "./PlaylistInfo.css";
 
 const PlaylistInfo = (props) => {
   const [playlistInfo, setPlaylistInfo] = useState([]);
+  const [header, setHeader] = useState([]);
   const token = useToken();
 
   useEffect(() => {
     try {
       axios
-        .get(
-          `${SpotifyURL}/playlists/${props.match.params.id}/tracks`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
+        .get(`${SpotifyURL}/playlists/${props.match.params.id}/tracks`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then(({ data }) => setPlaylistInfo(data.items));
+      axios
+        .get(`${SpotifyURL}/playlists/${props.match.params.id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }) => setHeader([data]));
     } catch (err) {
       console.log(err);
     }
   }, [token, props.match.params.id]);
+
+  const headerMap = header.map(({ name, description, images }) => {
+    return (
+      <PlaylistHeader name={name} description={description} images={images} />
+    );
+  });
 
   const infoMap = playlistInfo.map((playlist, index) => {
     const duration = new Date(playlist.track.duration_ms);
@@ -52,16 +63,20 @@ const PlaylistInfo = (props) => {
 
   return (
     <div>
-      <PlaylistHeader id={props.match.params.id} />
-
+      {headerMap}
       <div className="playlist-info">
-        <ul className="column-titles">
+        <div className="column-headers">
+        <ul className="number-title">
           <li>#</li>
-          <li id="track-title">Title</li>
-          <li id="album-title">Album</li>
-          <li id="date-title">Date Added</li>
+          <li>Title</li>
+        </ul>
+        <ul className="album-date-duration" >
+          <li>Album</li>
+          <li id="playlist-date">Date Added</li>
           <li>Duration</li>
         </ul>
+
+        </div>
         <SideBar />
         <div className="playlist">{infoMap}</div>
       </div>
