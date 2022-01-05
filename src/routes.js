@@ -11,6 +11,10 @@ import Albums from './Components/Albums/Albums';
 import Playlists from './Components/Playlists/Playlists';
 import PlaylistInfo from './Components/Playlists/PlaylistInfo';
 import Podcasts from './Components/Podcasts/Podcasts';
+import Tracks from './Components/Tracks/Tracks';
+import Track from './Components/Tracks/Track';
+import DeleteTracks from './Components/Tracks/DeleteTracks';
+import SaveTracks from './Components/Tracks/SaveTracks';
 
 export default (
   <BrowserRouter>
@@ -25,5 +29,9 @@ export default (
     <Route path='/playlists' component={Playlists} />
     <Route path='/playlist/:id' component={PlaylistInfo} />
     <Route path='/podcasts' component={Podcasts} />
+    <Route path='/tracks' component={Tracks}/>
+    <Route path='/delete-track/:ids' component={DeleteTracks}/>
+    <Route path='/track/:id' component={Track}/>
+    <Route path='/save-track/:ids' component={SaveTracks}/>
   </BrowserRouter>
 );

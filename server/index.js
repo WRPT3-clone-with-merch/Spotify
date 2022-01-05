@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const massive = require("massive");
 const session = require("express-session");
+
 const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING } = process.env;
 const request = require("request");
 
@@ -21,12 +22,12 @@ massive({
   .catch((err) => console.log(err));
 
 app.use(
-	session({
-		resave: true,
-		saveUninitialized: false,
-		secret: SESSION_SECRET,
-		cookie: { maxAge:  60000 * 60 * 24 * 90}
-}));
+  session({
+    resave: true,
+    saveUninitialized: false,
+    secret: SESSION_SECRET,
+    cookie: { maxAge: 60000 * 60 * 24 * 90 }
+  }));
 
 app.use(express.json());
 
@@ -42,26 +43,49 @@ var generateRandomString = function (length) {
   return text;
 };
 
-app.get("/auth/login", (req, res) => {
-  var scope = "streaming \
-	user-read-email \
-	user-read-private";
-
+app.post("/api/token", (req, res) => {
+  var scope =
+  "streaming \
+  user-read-email \
+  user-read-private";
+  
   var state = generateRandomString(16);
-
+  
   var auth_query_parameters = new URLSearchParams({
     response_type: "code",
     client_id: spotify_client_id,
     scope: scope,
     redirect_uri: "http://localhost:5000/auth/callback",
     state: state,
+    grant_type: authorization_code,
   });
-
+  
   res.redirect(
     "https://accounts.spotify.com/authorize/?" +
+    auth_query_parameters.toString()
+    );
+  });
+  
+  app.get("/auth/login", (req, res) => {
+    var scope = "streaming \
+    user-read-email \
+    user-read-private";
+  
+    var state = generateRandomString(16);
+  
+    var auth_query_parameters = new URLSearchParams({
+      response_type: "code",
+      client_id: spotify_client_id,
+      scope: scope,
+      redirect_uri: "http://localhost:5000/auth/callback",
+      state: state,
+    });
+  
+    res.redirect(
+      "https://accounts.spotify.com/authorize/?" +
       auth_query_parameters.toString()
-  );
-});
+    );
+  });
 
 app.get("/auth/callback", (req, res) => {
   var code = req.query.code;
@@ -86,41 +110,20 @@ app.get("/auth/callback", (req, res) => {
 
   request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
-			req.session.token = body.access_token;
+      req.session.token = body.access_token;
       res.redirect('http://localhost:3000/homepage');
     }
   });
 });
 
 app.get('/auth/token', (req, res) => {
-  if(req.session.token) {res.json(
-     {
+  if (req.session.token) {
+    res.json(
+      {
         access_token: req.session.token,
-     })} else {res.sendStatus(403)}
+      })
+  } else { res.sendStatus(403) }
 });
 
-
-app.post("/api/token", (req, res) => {
-  var scope =
-    "streaming \
-    user-read-email \
-    user-read-private";
-
-  var state = generateRandomString(16);
-
-  var auth_query_parameters = new URLSearchParams({
-    response_type: "code",
-    client_id: spotify_client_id,
-    scope: scope,
-    redirect_uri: "http://localhost:5000/auth/callback",
-    state: state,
-    grant_type: authorization_code,
-  });
-
-  res.redirect(
-    "https://accounts.spotify.com/authorize/?" +
-      auth_query_parameters.toString()
-  );
-});
 
 app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`));
