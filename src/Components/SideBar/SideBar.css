@@ -32,3 +32,18 @@
   cursor: pointer;
 }
 
+.side-bar-list {
+  border-top: 1px solid rgb(124, 123, 123);
+  margin: 1vh 0 0 -1vw;
+  width: 15vw;
+}
+
+.playlist-titles {
+  color: #a5a58d;
+  text-decoration: none;
+  list-style: none;
+}
+
+.playlist-titles:hover {
+  color: white;
+}
