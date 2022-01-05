@@ -28,13 +28,25 @@ const WebPlayback = (props) => {
 
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
-        getOAuthToken: (cb) => {
+        getOAuthToken: cb => {
           cb(props.token);
         },
         volume: 0.5,
       });
 
       setPlayer(player);
+
+      const track = {
+        name: '',
+        album: {
+          images: [
+            { url: ''}
+          ],
+        },
+        artists: [
+          {name: ''}
+        ]
+      }
 
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
@@ -91,16 +103,17 @@ const WebPlayback = (props) => {
             <button
               className="btn-spotify"
               onClick={() => {
-                player.previousTrack();
+                player.previousTrack()
               }}
             >
               &lt;&lt;
             </button>
 
             <button
+              id='togglePlay'
               className="play-pause-btn-spotify"
               onClick={() => {
-                player.togglePlay();
+                player.togglePlay()
               }}
             >
               {is_paused ? "PLAY" : "PAUSE"}
@@ -109,7 +122,7 @@ const WebPlayback = (props) => {
             <button
               className="btn-spotify"
               onClick={() => {
-                player.nextTrack();
+                player.nextTrack()
               }}
             >
               &gt;&gt;

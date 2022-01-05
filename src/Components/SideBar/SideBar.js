@@ -18,7 +18,7 @@ const SideBarComponent = (props) => {
       <Link to='/search'>
       <button className='search-btn side-bar-btn'>Search</button>
       </Link>
-      <Link to='/library'>
+      <Link to='/playlists'>
       <button className='your-library-btn side-bar-btn'>Your Library</button>
       </Link>
       <Link to='/merch'>
