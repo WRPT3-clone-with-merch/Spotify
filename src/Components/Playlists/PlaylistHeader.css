@@ -1,0 +1,25 @@
+.header-container {
+  color: white;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  display: flex;
+
+}
+
+.header-img {
+  height: 250px;
+}
+
+.header-info {
+  margin-left: 2vw;
+  line-height: 2vh;
+}
+
+.header-name {
+  font-size: 5em;
+}
+
+.header-description {
+  color: #747474;
+}

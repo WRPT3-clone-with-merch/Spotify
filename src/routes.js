@@ -21,7 +21,7 @@ export default (
   <BrowserRouter>
     <Route exact path='/' component={LandingPage} />
     <Route path='/homepage' component={HomePage} />
-    <Route path='/library' component={Library} />
+    <Route path='/playlists' component={Library} />
     <Route path='/merch' component={Merch} />
     <Route path='/search' component={Search} />
     <Route path='/liked-songs' component={LikedSongs} />

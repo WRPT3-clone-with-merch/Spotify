@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './SideBar.css';
 import Logo from '../../images/Spotify_Logo_RGB_White.png';
 import { Link } from 'react-router-dom';
+import SideBarPlaylist from './SideBarPlaylist';
 
 const SideBarComponent = (props) => {
 
@@ -18,7 +18,7 @@ const SideBarComponent = (props) => {
       <Link to='/search'>
       <button className='search-btn side-bar-btn'>Search</button>
       </Link>
-      <Link to='/library'>
+      <Link to='/playlists'>
       <button className='your-library-btn side-bar-btn'>Your Library</button>
       </Link>
       <Link to='/merch'>
@@ -33,7 +33,11 @@ const SideBarComponent = (props) => {
         <button className='liked-songs-btn side-bar-btn'>Liked Songs</button>
       </Link>
       </div>
+<<<<<<< HEAD
       
+=======
+      <SideBarPlaylist />
+>>>>>>> main
     </div>
   )
 }
