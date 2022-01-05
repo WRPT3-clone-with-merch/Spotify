@@ -5,7 +5,7 @@
 
 .column-titles {
   position: absolute;
-  top: 15%;
+  top: 45%;
   left: 20%;
   display: flex;
   flex-direction: row;
@@ -45,24 +45,45 @@
 
 .playlist {
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 20%;
   white-space: pre;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-#track-title {
-  width: 15vw;
-  margin-left: -5vw; 
+.column-headers {
+  display: flex;
+  flex-direction: row;
+  width: 77vw;
+  position: absolute;
+  top: 44%;
+  left: 20%;
+  background-color: #252422;
+  justify-content: space-between;
+  height: 10vh;
 }
 
-#album-title {
-  width: 15vw;
+.number-title {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  width: 5vw;
+  justify-content: space-between;
+  margin-left: -1vw;
 }
 
-#date-title {
-  width: 15vw;
+.album-date-duration {
+  list-style: none;
+  width: 40vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 2vw;
+}
+
+#playlist-date {
+  margin-left: 13vw;
 }
 
 .list-album-cover {
