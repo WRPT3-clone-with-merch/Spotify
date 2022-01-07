@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import "./WebPlayback.css";
 
 const track = {
   name: "",
@@ -25,7 +26,6 @@ const WebPlayback = (props) => {
     window.onSpotifyWebPlaybackSDKReady = () => {
 
 
-
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
         getOAuthToken: cb => {
@@ -48,6 +48,8 @@ const WebPlayback = (props) => {
         ]
       }
 
+      // f975ae8ac69499820ec23f805366433d65ca6b11
+
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
       });
@@ -66,18 +68,6 @@ const WebPlayback = (props) => {
         player.getCurrentState().then((state) => {
           !state ? setActive(false) : setActive(true);
         });
-
-        player.togglePlay().then(() => {
-          console.log('Toggled playback!');
-        });
-
-        player.nextTrack().then(() => {
-          console.log('Skipped to next track!');
-        });
-
-        player.previousTrack().then(() => {
-          console.log('Set to previous track!');
-        });
       });
 
       player.connect();
@@ -88,18 +78,20 @@ const WebPlayback = (props) => {
     <>
       <div className="container">
         <div className="main-wrapper">
-          <img
-            src={current_track.album.images[0].url}
-            class="now-playing__cover"
-            alt=""
-          />
+            {is_active ? (
+              <img
+                src={current_track.album.images[0].url}
+                className="now-playing__cover"
+                alt=""
+              />
+            ) : null}
 
-          <div className="now-playing__side">
-            <div className="now-playing__name">{current_track.name}</div>
+            <div className="now-playing__side">
+              <div className="now-playing__name">{current_track.name}</div>
 
-            <div className="now-playing__artist">
-              {current_track.artists[0].name}
-            </div>
+              <div className="now-playing__artist">
+                {current_track.artists[0].name}
+              </div>
             <button
               className="btn-spotify"
               onClick={() => {
