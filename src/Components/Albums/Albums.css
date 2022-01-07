@@ -2,17 +2,43 @@
   color: white;
   display: flex;
   flex-direction: row;
+  width: 60vw;
   flex-wrap: wrap;
+  /* padding-top: 30%; */
+  height: 60vh;
+  justify-content: space-between;
 }
 
-.following-albums {
+.following-albums-info {
+  background-color: #252422;
+  height: 350px;
+  width: 250px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  border-radius: 5%;
+  margin-bottom: 20px;
+}
+
+.following-albums-info:hover {
+  background-color: #463f3a;
+}
+
+.album-image {
+  height: 150px;
+  width: 165px;
+}
+
+.album-name {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.album-image {
-  height: 160px;
-  width: 160px;
+.album-artists-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

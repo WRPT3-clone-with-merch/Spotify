@@ -24,7 +24,30 @@ const WebPlayback = (props) => {
 
     window.onSpotifyWebPlaybackSDKReady = () => {
 
-
+      const play = ({
+        spotify_uri,
+        playerInstance: {
+          _options: {
+            getOAuthToken
+          }
+        }
+      }) => {
+        try {
+          getOAuthToken(token => {
+            axios(`https://api.spotify.com/v1/me/player/play`, {
+              method: 'PUT',
+              body: JSON.stringify({ uris: [spotify_uri] }),
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              },
+            });
+          });
+        }
+        catch {
+          return;
+        }
+      };
 
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
@@ -66,23 +89,12 @@ const WebPlayback = (props) => {
         player.getCurrentState().then((state) => {
           !state ? setActive(false) : setActive(true);
         });
-
-        player.togglePlay().then(() => {
-          console.log('Toggled playback!');
-        });
-
-        player.nextTrack().then(() => {
-          console.log('Skipped to next track!');
-        });
-
-        player.previousTrack().then(() => {
-          console.log('Set to previous track!');
-        });
       });
 
       player.connect();
     };
   }, [props.token]);
+
 
   return (
     <>
