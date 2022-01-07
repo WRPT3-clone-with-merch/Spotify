@@ -31,7 +31,7 @@ export default (
     <Route path='/podcasts' component={Podcasts} />
     <Route path='/tracks' component={Tracks}/>
     <Route path='/delete-track/:ids' component={DeleteTracks}/>
-    <Route path='/track/:id' component={Track}/>
+    <Route path='/tracks/:id' component={Track}/>
     <Route path='/save-track/:ids' component={SaveTracks}/>
   </BrowserRouter>
 );

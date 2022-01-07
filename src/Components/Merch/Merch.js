@@ -26,7 +26,7 @@ const MerchComponent = (props) => {
 
 	const savedSongs = userList.map((song) => {
 		return(
-			<Link to='/track/:id' >
+			<Link to={`/tracks/${song.track.id}`} >
         <section key={song.id}>
           <img src={song.track.album.images[2].url}/>
           <h2>{song.track.name}</h2>

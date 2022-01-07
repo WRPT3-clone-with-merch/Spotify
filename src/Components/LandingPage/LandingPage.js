@@ -9,8 +9,22 @@ const LandingPageComponent = (props) => {
     REACT_APP_REDIRECT_URL,
   } = process.env;
 
+  const scopes = [
+    "streaming",
+    "user-read-private",
+    "user-follow-read",
+    "user-follow-modify",
+    "user-library-read",
+    "user-library-modify",
+    "user-read-playback-state",
+    "user-modify-playback-state",
+    "user-read-currently-playing",
+    "user-read-recently-played",
+    "playlist-read-private",
+  ]
+
   const handleLogin = () => {
-    window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=streaming%20playlist-read-private%20user-follow-modify%20user-follow-read%20user-library-read%20user-modify-playback-state%20user-library-read&show_dialog=true`;
+    window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=${scopes.join("%20")}&show_dialog=true`;
   };
 
   return (
