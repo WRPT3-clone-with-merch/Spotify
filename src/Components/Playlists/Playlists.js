@@ -31,6 +31,7 @@ const Playlists = (props) => {
         <div key={list.id}>
           <img className="playlist-image" src={list.images[0].url} alt="playlist" />
           <h3>{list.name}</h3>
+          <p className="playlist-description">{list.description}</p>
         </div>
       </Link>
     );

@@ -3,7 +3,6 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import LandingPage from './Components/LandingPage/LandingPage';
 import HomePage from './Components/HomePage/HomePage';
 import Merch from './Components/Merch/Merch';
-import Search from './Components/Search/Search';
 import LikedSongs from './Components/LikedSongs/LikedSongs';
 import CreatePlaylist from './Components/CreatePlaylist/CreatePlaylist';
 import Artists from './Components/Artists/Artists';
@@ -15,13 +14,14 @@ import Tracks from './Components/Tracks/Tracks';
 import Track from './Components/Tracks/Track';
 import DeleteTracks from './Components/Tracks/DeleteTracks';
 import SaveTracks from './Components/Tracks/SaveTracks';
+import TopNavSearchComponent from './Components/TopNav/TopNavSearch';
 
 export default (
   <BrowserRouter>
     <Route exact path='/' component={LandingPage} />
     <Route path='/homepage' component={HomePage} />
     <Route path='/merch' component={Merch} />
-    <Route path='/search' component={Search} />
+    <Route path='/search' component={TopNavSearchComponent} />
     <Route path='/liked-songs' component={LikedSongs} />
     <Route path='/create-playlist' component={CreatePlaylist} />
     <Route path='/artists' component={Artists} />

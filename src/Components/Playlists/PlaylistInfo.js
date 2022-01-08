@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SideBar from "../SideBar/SideBar";
-import { useToken, SpotifyURL, play } from "../../utils";
+import { useToken, SpotifyURL } from "../../utils";
 import axios from "axios";
 import PlaylistHeader from "./PlaylistHeader";
 import "./PlaylistInfo.css";
@@ -9,11 +9,10 @@ const PlaylistInfo = (props) => {
   const [playlistInfo, setPlaylistInfo] = useState([]);
   const [header, setHeader] = useState([]);
   const [uriList, setUriList] = useState([]);
-  const [track, setTrack] = useState("");
   const token = useToken();
-  console.log({uriList});
-  console.log({track});
-  console.log({playlistInfo});
+  // console.log({uriList});
+  // console.log({track});
+  // console.log({playlistInfo});
 
   useEffect(() => {
     try {
@@ -23,8 +22,8 @@ const PlaylistInfo = (props) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then(({ data }) =>{
-          setPlaylistInfo(data.items)
+        .then(({ data }) => {
+          setPlaylistInfo(data.items);
           const uris = data.items.reduce((acc, curr) => {
             acc.push(curr.track.uri);
             return acc;
@@ -49,16 +48,13 @@ const PlaylistInfo = (props) => {
     );
   });
 
-
-
   const play = async (position) => {
     try {
       const req = await axios.get(`${SpotifyURL}/me/player/devices`, {
         headers: {
           Authorization: `Bearer ${token}`,
-        }
+        },
       });
-      console.log(req.data);
       await axios.put(
         `${SpotifyURL}/me/player/play?device_id=${req.data.devices[0].id}`,
         {
@@ -82,8 +78,9 @@ const PlaylistInfo = (props) => {
   const infoMap = playlistInfo.map((playlist, index) => {
     const duration = new Date(playlist.track.duration_ms);
     const dateAdded = new Date(playlist.added_at);
+
     return (
-      <div key={playlist.track.uri} className="track-container">
+      <div key={index} className="track-container">
         <p>{index + 1}</p>
         <div className="track-image-main">
           <img

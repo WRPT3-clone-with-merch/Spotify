@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
-import SideBar from '../SideBar/SideBar';
-import TopNavSearch from '../TopNav/TopNavSearch';
-import axios from 'axios';
-import './Search.css';
+import React, { useState, useEffect } from "react";
+import SideBar from "../SideBar/SideBar";
+import "./Search.css";
 
-const SearchComponent = (props) => {
+const SearchComponent = ({ albums, artists }) => {
+
+  const albumsMap = albums.map((album, index) => {
+    return (
+      <h1 key={index}>{album.name}</h1>
+    )
+  })
 
   return (
-    <div>
+    <div className="search-results">
+      <h1>Search Results</h1>
+      {albumsMap}
       <SideBar />
-      <TopNavSearch />
     </div>
-  )
-}
+  );
+};
 
 export default SearchComponent;
