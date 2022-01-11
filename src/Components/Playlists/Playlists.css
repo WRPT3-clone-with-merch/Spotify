@@ -20,6 +20,10 @@
   justify-content: center;
 }
 
+.playlist-preview:hover {
+  background-color: #202020;
+}
+
 .playlist-image {
   height: 150px;
   width: 165px;

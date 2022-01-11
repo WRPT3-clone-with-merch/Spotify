@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import SideBar from "../SideBar/SideBar";
+import TopResult from "./TopResult";
+import SearchPlaylists from "./SearchPlaylists";
 import "./Search.css";
 
-const SearchComponent = ({ albums, artists }) => {
-
-  const albumsMap = albums.map((album, index) => {
-    return (
-      <h1 key={index}>{album.name}</h1>
-    )
-  })
-
+const SearchComponent = ({ albums, artists, playlists }) => {
   return (
     <div className="search-results">
-      <h1>Search Results</h1>
-      {albumsMap}
+      <h2>Top Result</h2>
+      <TopResult artists={artists} />
+      <SearchPlaylists playlists={playlists} artist={artists} />
       <SideBar />
     </div>
   );

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { MdOutlineArrowBackIosNew } from "react-icons/md";
-import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos} from "react-icons/md";
+import {BsSearch} from "react-icons/bs";
 import { useToken, SpotifyURL } from "../../utils";
 import SearchComponent from "../Search/Search";
 import "./TopNav.css";
 
 const TopNavSearchComponent = (props) => {
+  const token = useToken();
   const [user, setUser] = useState([]);
+  const [searchPlaylists, setSearchPlaylists] = useState([]);
   const [searchAlbum, setSearchAlbum] = useState([]);
   const [searchArtist, setSearchArtist] = useState([]);
-  const token = useToken();
   const [searchInput, setSearchInput] = useState("");
+
   useEffect(() => {
     try {
       axios
@@ -29,14 +31,15 @@ const TopNavSearchComponent = (props) => {
   const handleSearch = async () => {
     try {
       const req = await axios.get(
-        `${SpotifyURL}/search?q=artist%3A${searchInput}&type=artist%2Calbum`,
+        `${SpotifyURL}/search?q=${searchInput}&type=artist%2Calbum%2Cplaylist`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          params: { market: "US", limit: 2, offset: 0, include_external: "audio"},
+          params: { market: "US", limit: 5, offset: 0, include_external: "audio"},
         }
       );
+      setSearchPlaylists(req.data.playlists.items);
       setSearchAlbum(req.data.albums.items);
       setSearchArtist(req.data.artists.items);
     } catch (err) {
@@ -62,13 +65,13 @@ const TopNavSearchComponent = (props) => {
             placeholder="Artists, Songs, or Podcasts"
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <button onClick={handleSearch}>Search</button>
+          <BsSearch onClick={handleSearch} className="search-icon" />
         </div>
         <div className="user-name">
           <button className="user-btn">{user.display_name}</button>
         </div>
       </nav>
-      <SearchComponent albums={searchAlbum} artists={searchArtist} />
+      <SearchComponent albums={searchAlbum} artists={searchArtist} playlists={searchPlaylists} />
     </div>
   );
 };

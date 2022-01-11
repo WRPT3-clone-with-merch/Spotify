@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import SideBar from "../SideBar/SideBar";
-import { useToken, SpotifyURL } from "../../utils";
 import axios from "axios";
+import SideBar from "../SideBar/SideBar";
 import PlaylistHeader from "./PlaylistHeader";
+import TopNav from "../TopNav/TopNav";
+import { useToken, SpotifyURL } from "../../utils";
 import "./PlaylistInfo.css";
 
 const PlaylistInfo = (props) => {
@@ -10,9 +11,6 @@ const PlaylistInfo = (props) => {
   const [header, setHeader] = useState([]);
   const [uriList, setUriList] = useState([]);
   const token = useToken();
-  // console.log({uriList});
-  // console.log({track});
-  // console.log({playlistInfo});
 
   useEffect(() => {
     try {
@@ -103,6 +101,7 @@ const PlaylistInfo = (props) => {
 
   return (
     <div>
+      <TopNav />
       {headerMap}
       <div className="playlist-info">
         <div className="column-headers">

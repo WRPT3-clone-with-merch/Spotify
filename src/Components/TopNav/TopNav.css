@@ -83,3 +83,8 @@
   flex-direction: row;
   padding-bottom: 15px;
 }
+
+.search-icon {
+  position: relative;
+  left: -10%;
+}
