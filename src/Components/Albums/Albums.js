@@ -4,6 +4,7 @@ import TopNavLibrary from '../TopNav/TopNavLibrary';
 import axios from 'axios';
 import './Albums.css';
 import { useToken } from "../../utils";
+import { Link } from 'react-router-dom';
 
 const AlbumsComponent = (props) => {
   const [list, setList] = useState([]);
@@ -26,6 +27,7 @@ const AlbumsComponent = (props) => {
 
   const albumsMap = list.map((list) => {
     return (
+      <Link to={`/albums/${list.id}`}>
       <div className='following-albums' key={list.id}>
         <div className='following-albums-info'>
         <img className='album-image' src={list.album.images[1].url} />
@@ -33,6 +35,7 @@ const AlbumsComponent = (props) => {
         <h3 className='album-artists-name'>{list.album.artists[0].name}</h3>
         </div>
       </div>
+      </Link>
     )
   })
 
