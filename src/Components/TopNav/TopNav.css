@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 20vw;
-  background-color: #252422;
+  background-color: #0a0908;
   width: 80vw;
   height: 50px;
   padding-top: 20px;
@@ -53,14 +53,15 @@
 }
 
 .music-btn {
-  background-color: #252422;
-  color: white;
+  background-color: #0a0908;
+  color: #a5a58d;
   font-weight: bold;
-  border: 1px solid #252422;
+  border: 1px solid #0a0908;
 }
 
 .music-btn:hover {
   cursor: pointer;
+  color: white;
 }
 
 .music-btn-container {

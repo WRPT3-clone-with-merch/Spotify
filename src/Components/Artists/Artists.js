@@ -28,19 +28,24 @@ const ArtistsComponent = (props) => {
     return (
       <div className='following-artists' key={list.id}>
         <img className='artist-image' src={list.images[2].url} />
+        <div className='artist-info'>
         <h3 className='artist-name'>{list.name}</h3>
-        {/* <p className='artist-description'>{list.description}</p> */}
+        <p className='artist'>Artist</p>
+        </div>
       </div>
     )
   })
 
   return (
     <div>
+      <div>
+      <p className='artist-category'>Artists</p>
       <div className='artist-container'>
       {artistsMap}
       </div>
       <SideBar />
       <TopNavLibrary />
+      </div>
     </div>
   )
 }

@@ -30,8 +30,8 @@ const PodcastsComponent = (props) => {
 
   const showsMap = shows.map((shows) => {
     return (
-      <Link to={`/playlist/${shows.show.id}`} className="shows-preview" >
-        <div key={shows.show.id}>
+      <Link to={`/playlist/${shows.show.id}`} >
+        <div className="shows-preview" key={shows.show.id}>
           <img className='shows-image' src={shows.show.images[0].url} alt='shows' />
           <h3>{shows.show.name}</h3>
         </div>
@@ -40,12 +40,15 @@ const PodcastsComponent = (props) => {
     });
 
   return (
+    <div>
     <div className='shows'>
+      <p className='category'>Podcasts</p>
       <div className='shows-container'>
       {showsMap}
+      </div>
+    </div>
       <SideBar />
       <TopNavLibrary />
-      </div>
     </div>
   )
 }

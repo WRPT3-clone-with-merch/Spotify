@@ -39,6 +39,7 @@ const AlbumsComponent = (props) => {
   return (
     <div>
       <div>
+        <p className='category'>Albums</p>
         <div className='following-albums-container'>
       {albumsMap}
         </div>
