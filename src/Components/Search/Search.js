@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import SideBar from '../SideBar/SideBar';
-import TopNavSearch from '../TopNav/TopNavSearch';
-import axios from 'axios';
-import './Search.css';
+import React from "react";
+import SideBar from "../SideBar/SideBar";
+import TopResult from "./TopResult";
+import SearchPlaylists from "./SearchPlaylists";
+import "./Search.css";
 
-const SearchComponent = (props) => {
-
+const SearchComponent = ({ albums, artists, playlists }) => {
   return (
-    <div>
+    <div className="search-results">
+      <h2>Top Result</h2>
+      <TopResult artists={artists} />
+      <SearchPlaylists playlists={playlists} artist={artists} />
       <SideBar />
-      <TopNavSearch />
     </div>
-  )
-}
+  );
+};
 
 export default SearchComponent;

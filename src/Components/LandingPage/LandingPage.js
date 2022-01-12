@@ -1,6 +1,6 @@
-import React from 'react';
-import './LandingPage.css';
-import Logo from '../../images/Spotify_Logo_RGB_White.png';
+import React from "react";
+import "./LandingPage.css";
+import Logo from "../../images/Spotify_Logo_RGB_White.png";
 
 const LandingPageComponent = (props) => {
   const {
@@ -21,16 +21,18 @@ const LandingPageComponent = (props) => {
     "user-read-currently-playing",
     "user-read-recently-played",
     "playlist-read-private",
-  ]
+  ];
 
   const handleLogin = () => {
     window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=${scopes.join("%20")}&show_dialog=true`;
   };
 
   return (
-    <div className='parent-div'>
-      <img src={Logo} alt='Logo' className='logo-landing-page' />
-      <button className='landing-btn' onClick={handleLogin}>Connect to Spotify</button>
+    <div className="parent-div">
+      <img src={Logo} alt="Logo" className="logo-landing-page" />
+      <button className="landing-btn" onClick={handleLogin}>
+        Connect to Spotify
+      </button>
     </div>
   );
 };

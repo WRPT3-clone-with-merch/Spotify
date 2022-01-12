@@ -24,8 +24,6 @@ const WebPlayback = (props) => {
     document.body.appendChild(script);
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-
-
       const player = new window.Spotify.Player({
         name: "Web Playback SDK",
         getOAuthToken: cb => {
@@ -47,8 +45,6 @@ const WebPlayback = (props) => {
           {name: ''}
         ]
       }
-
-      // f975ae8ac69499820ec23f805366433d65ca6b11
 
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
