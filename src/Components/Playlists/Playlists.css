@@ -5,7 +5,6 @@
   left: 20%;
   display: flex;
   flex-wrap: wrap;
-  background-color: #252422;
 }
 
 .playlist-preview {
@@ -19,6 +18,10 @@
   color: white;
   display: flex;
   justify-content: center;
+}
+
+.playlist-preview:hover {
+  background-color: #202020;
 }
 
 .playlist-image {
