@@ -12,6 +12,7 @@ const PlaylistInfo = (props) => {
   const [uriList, setUriList] = useState([]);
   const token = useToken();
 
+
   useEffect(() => {
     try {
       axios

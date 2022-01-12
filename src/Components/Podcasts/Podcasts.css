@@ -1,0 +1,42 @@
+.shows-container {
+  color: white;
+  position: absolute;
+  top: 10%;
+  left: 22%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #0a0908;
+  border-radius: 2%;
+}
+
+.shows {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.shows-image {
+  height: 200px;
+  width: 200px;
+  border-radius: 2%;
+  box-shadow: 5px 5px 8px black;
+}
+
+.shows-preview {
+  color: white;
+  background-color: #0a0908;
+  height: 350px;
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2%;
+  margin-bottom: 20px;
+}
+
+.shows-preview:hover {
+  background-color: #463f3a;
+  cursor: pointer;
+}

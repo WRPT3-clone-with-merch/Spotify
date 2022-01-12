@@ -1,18 +1,71 @@
 .following-albums-container {
-  color: white;
+  color: #a5a58d;
   display: flex;
   flex-direction: row;
+  width: 60vw;
   flex-wrap: wrap;
+  /* padding-top: 30%; */
+  height: 60vh;
+  justify-content: space-between;
 }
 
-.following-albums {
+.category {
+  color: white;
+  margin-left: 20px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.following-albums-info {
+  background-color: #0a0908;
+  height: 350px;
+  width: 250px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  border-radius: 2%;
+  margin-bottom: 20px;
+}
+
+.following-albums-info:hover {
+  background-color: #463f3a;
+  cursor: pointer;
 }
 
 .album-image {
-  height: 160px;
-  width: 160px;
+  height: 200px;
+  width: 200px;
+  box-shadow: 5px 5px 8px black;
+  border-radius: 2%;
+}
+
+.album-image:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 8px black;
+}
+
+.album-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.album-name:hover {
+  cursor: pointer;
+}
+
+.album-artists-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: small;
+}
+
+.album-artists-name:hover {
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
 }
