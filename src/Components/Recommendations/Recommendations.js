@@ -12,6 +12,7 @@ const Recommendations  = props => {
 	useEffect(() => {
 		try {
 			axios.get('https://api.spotify.com/v1/recommendations', {
+				params: {  },
 				headers: {Authorization: `Bearer ${token}`}
 			})
 			.then(res => setRecommendations(res.data))
@@ -20,4 +21,16 @@ const Recommendations  = props => {
       console.log(err);
     }
 	}, [token]);
+
+	const recMap = recommendations.map(song => {
+		return (
+			<div key={song.id}>
+				<ul>
+					<Link to >
+
+					</Link>
+				</ul>
+			</div>
+		)
+	})
 }

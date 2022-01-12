@@ -2,9 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import LandingPage from './Components/LandingPage/LandingPage';
 import HomePage from './Components/HomePage/HomePage';
-import Library from './Components/Library/Library';
 import Merch from './Components/Merch/Merch';
-import Search from './Components/Search/Search';
 import LikedSongs from './Components/LikedSongs/LikedSongs';
 import CreatePlaylist from './Components/CreatePlaylist/CreatePlaylist';
 import Artists from './Components/Artists/Artists';
@@ -16,14 +14,14 @@ import Tracks from './Components/Tracks/Tracks';
 import Track from './Components/Tracks/Track';
 import DeleteTracks from './Components/Tracks/DeleteTracks';
 import SaveTracks from './Components/Tracks/SaveTracks';
+import TopNavSearchComponent from './Components/TopNav/TopNavSearch';
 
 export default (
   <BrowserRouter>
     <Route exact path='/' component={LandingPage} />
     <Route path='/homepage' component={HomePage} />
-    <Route path='/playlists' component={Library} />
     <Route path='/merch' component={Merch} />
-    <Route path='/search' component={Search} />
+    <Route path='/search' component={TopNavSearchComponent} />
     <Route path='/liked-songs' component={LikedSongs} />
     <Route path='/create-playlist' component={CreatePlaylist} />
     <Route path='/artists' component={Artists} />
@@ -33,7 +31,7 @@ export default (
     <Route path='/podcasts' component={Podcasts} />
     <Route path='/tracks' component={Tracks}/>
     <Route path='/delete-track/:ids' component={DeleteTracks}/>
-    <Route path='/track/:id' component={Track}/>
+    <Route path='/tracks/:id' component={Track}/>
     <Route path='/save-track/:ids' component={SaveTracks}/>
   </BrowserRouter>
 );

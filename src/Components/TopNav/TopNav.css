@@ -2,12 +2,22 @@
   position: fixed;
   top: 0;
   left: 20vw;
-  background-color: #252422;
+  background-color: #0a0908;
   width: 80vw;
   height: 50px;
   padding-top: 20px;
   display: flex;
   flex-direction: row;
+}
+
+.arrow-btn {
+  background-color: black;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  color: white;
 }
 
 .arrow-btn:hover {
@@ -17,8 +27,6 @@
 .back-forward-arrows {
   margin-left: 20px;
 }
-
-
 
 .user-name {
   position : fixed;
@@ -53,14 +61,15 @@
 }
 
 .music-btn {
-  background-color: #252422;
-  color: white;
+  background-color: #0a0908;
+  color: #a5a58d;
   font-weight: bold;
-  border: 1px solid #252422;
+  border: 1px solid #0a0908;
 }
 
 .music-btn:hover {
   cursor: pointer;
+  color: white;
 }
 
 .music-btn-container {
@@ -74,4 +83,9 @@
   display: flex;
   flex-direction: row;
   padding-bottom: 15px;
+}
+
+.search-icon {
+  position: relative;
+  left: -10%;
 }

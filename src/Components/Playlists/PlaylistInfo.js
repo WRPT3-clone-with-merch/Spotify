@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import SideBar from "../SideBar/SideBar";
-import { useToken, SpotifyURL } from "../../utils";
 import axios from "axios";
+import SideBar from "../SideBar/SideBar";
 import PlaylistHeader from "./PlaylistHeader";
+import TopNav from "../TopNav/TopNav";
+import { useToken, SpotifyURL } from "../../utils";
 import "./PlaylistInfo.css";
 
 const PlaylistInfo = (props) => {
   const [playlistInfo, setPlaylistInfo] = useState([]);
   const [header, setHeader] = useState([]);
+  const [uriList, setUriList] = useState([]);
   const token = useToken();
+
 
   useEffect(() => {
     try {
@@ -18,7 +21,14 @@ const PlaylistInfo = (props) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then(({ data }) => setPlaylistInfo(data.items));
+        .then(({ data }) => {
+          setPlaylistInfo(data.items);
+          const uris = data.items.reduce((acc, curr) => {
+            acc.push(curr.track.uri);
+            return acc;
+          }, []);
+          setUriList(uris);
+        });
       axios
         .get(`${SpotifyURL}/playlists/${props.match.params.id}`, {
           headers: {
@@ -37,9 +47,37 @@ const PlaylistInfo = (props) => {
     );
   });
 
+  const play = async (position) => {
+    try {
+      const req = await axios.get(`${SpotifyURL}/me/player/devices`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await axios.put(
+        `${SpotifyURL}/me/player/play?device_id=${req.data.devices[0].id}`,
+        {
+          uris: uriList,
+          offset: {
+            position: +position,
+          },
+          position_ms: 0,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const infoMap = playlistInfo.map((playlist, index) => {
     const duration = new Date(playlist.track.duration_ms);
     const dateAdded = new Date(playlist.added_at);
+
     return (
       <div key={index} className="track-container">
         <p>{index + 1}</p>
@@ -48,6 +86,7 @@ const PlaylistInfo = (props) => {
             src={playlist.track.album.images[2].url}
             className="list-album-cover"
             alt="album cover"
+            onClick={() => play(index)}
           />
           <div className="track-main">
             <p>{playlist.track.name}</p>
@@ -63,19 +102,19 @@ const PlaylistInfo = (props) => {
 
   return (
     <div>
+      <TopNav />
       {headerMap}
       <div className="playlist-info">
         <div className="column-headers">
-        <ul className="number-title">
-          <li>#</li>
-          <li>Title</li>
-        </ul>
-        <ul className="album-date-duration" >
-          <li>Album</li>
-          <li id="playlist-date">Date Added</li>
-          <li>Duration</li>
-        </ul>
-
+          <ul className="number-title">
+            <li>#</li>
+            <li>Title</li>
+          </ul>
+          <ul className="album-date-duration">
+            <li>Album</li>
+            <li id="playlist-date">Date Added</li>
+            <li>Duration</li>
+          </ul>
         </div>
         <SideBar />
         <div className="playlist">{infoMap}</div>

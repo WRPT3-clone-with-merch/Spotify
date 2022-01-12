@@ -24,13 +24,11 @@ const AlbumsComponent = (props) => {
     }
   }, [token]);
 
-  console.log(list);
-
   const albumsMap = list.map((list) => {
     return (
-      <div className='following-albums-container' key={list.id}>
-        <div className='following-albums'>
-        <img className='artist-image' src={list.album.images[1].url} />
+      <div className='following-albums' key={list.id}>
+        <div className='following-albums-info'>
+        <img className='album-image' src={list.album.images[1].url} />
         <h3 className='album-name'>{list.album.name}</h3>
         <h3 className='album-artists-name'>{list.album.artists[0].name}</h3>
         </div>
@@ -41,7 +39,10 @@ const AlbumsComponent = (props) => {
   return (
     <div>
       <div>
+        <p className='category'>Albums</p>
+        <div className='following-albums-container'>
       {albumsMap}
+        </div>
       <SideBar />
       <TopNavLibrary />
       </div>
