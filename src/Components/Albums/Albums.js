@@ -26,9 +26,10 @@ const AlbumsComponent = (props) => {
   }, [token]);
 
   const albumsMap = list.map((list) => {
+    console.log(list.album.id);
     return (
-      <Link to={`/albums/${list.id}`}>
-      <div className='following-albums' key={list.id}>
+      <Link to={`/album/${list.album.id}`} className="album-preview">
+      <div className='following-albums' key={list.album.id}>
         <div className='following-albums-info'>
         <img className='album-image' src={list.album.images[1].url} />
         <h3 className='album-name'>{list.album.name}</h3>

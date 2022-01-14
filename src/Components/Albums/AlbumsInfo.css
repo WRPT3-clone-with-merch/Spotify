@@ -1,0 +1,60 @@
+.album-tracks-container {
+  width: 78vw;
+  margin-left: 22vw;
+  display: flex;
+  color: white;
+  margin-top: 30vh;
+  height: 100vh;
+}
+
+.track-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-radius: 25px;
+}
+
+.track-container:hover {
+  background-color: #463f3a;
+}
+
+.album-tracks {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.album-info {
+  width: 78vw;
+  margin-top: 10vh;
+  height: 20vh;
+}
+
+.bar-above-tracks {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #a5a58d;
+}
+
+.hash {
+  margin-left: 2vw;
+}
+
+.title {
+  margin-left: 2vw;
+}
+
+.artist-name {
+  justify-content: flex-start;
+  margin-left: 3vw;
+}
+
+.duration {
+  margin-left: 60vw;
+  position: absolute;
+  right: 5%;
+}
