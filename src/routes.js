@@ -15,6 +15,7 @@ import Track from './Components/Tracks/Track';
 import DeleteTracks from './Components/Tracks/DeleteTracks';
 import SaveTracks from './Components/Tracks/SaveTracks';
 import TopNavSearchComponent from './Components/TopNav/TopNavSearch';
+import ArtistPage from './Components/Artists/ArtistPage';
 
 export default (
   <BrowserRouter>
@@ -25,6 +26,7 @@ export default (
     <Route path='/liked-songs' component={LikedSongs} />
     <Route path='/create-playlist' component={CreatePlaylist} />
     <Route path='/artists' component={Artists} />
+    <Route path='/artist/:id' component={ArtistPage} />
     <Route path='/albums' component={Albums} />
     <Route path='/playlists' component={Playlists} />
     <Route path='/playlist/:id' component={PlaylistInfo} />

@@ -4,9 +4,9 @@
   flex-direction: row;
   width: 60vw;
   flex-wrap: wrap;
-  /* padding-top: 30%; */
   height: 600px;
   justify-content: space-between;
+  text-decoration: none;
 }
 
 .category {
@@ -40,12 +40,13 @@
   height: 350px;
   width: 250px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   border-radius: 2%;
   margin-bottom: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 .following-artists:hover {
@@ -55,4 +56,8 @@
 
 .artist {
   color: #a5a58d;
+}
+
+#artist-link {
+  text-decoration: none;
 }
