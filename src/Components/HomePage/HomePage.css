@@ -1,0 +1,81 @@
+.home-page {
+  margin-top: 35vh;
+  margin-left: 22vw;
+  width: 80vw;
+  height: 100vh;
+}
+
+.home-page-greeting {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.home-page-user-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 1% 0 0 1%;
+}
+
+.home-page-playlist-preview{
+  height: 80px;
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  background-color: #0a0908;
+  border-radius: 5px;
+  margin: 10px;
+  align-items: center;
+  font-size: 15px;
+}
+
+.playlist-link-home-page {
+  text-decoration: none;
+  color: white;
+  height: 80px;
+}
+
+.home-page-following-artists {
+  height: 80px;
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  background-color: #0a0908;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.home-page-playlist-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}
+
+.home-page-artist-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+}
+
+.home-page-playlist-preview:hover {
+  background-color: #463f3a;
+  cursor: pointer;
+}
+
+.home-page-following-artists:hover {
+  background-color: #463f3a;
+  cursor: pointer;
+}
+
+.home-page-name {
+  margin-left: 13px;
+  font-size: 15px;
+}
+
+.home-page-artist-info {
+  display: flex;
+  align-items: center;
+}

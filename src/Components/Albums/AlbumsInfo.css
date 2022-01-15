@@ -7,7 +7,7 @@
   height: 100vh;
 }
 
-.track-container {
+.track-container-album-info {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -15,7 +15,7 @@
   height: 15vh;
 }
 
-.track-container:hover {
+.track-container-album-info:hover {
   background-color: #463f3a;
 }
 
