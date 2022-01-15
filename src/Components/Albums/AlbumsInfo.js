@@ -67,37 +67,47 @@ const AlbumsInfo = (props) => {
   console.log(trackInfo);
 
   const infoMap = trackInfo.map((trackInfo, index) => {
+    const duration = new Date(trackInfo.duration_ms);
+    const leadingZero = (duration) => {
+      return (
+        duration.getSeconds() < 10 ? '0' : ''
+      )
+    }
+
     return (
-      <div key={index} className="track-container">
+      <div key={index} onClick={() => play(index)} className="track-container">
         <p>{index + 1}</p>
         <div className="track-info">
           <div className="album-tracks">
-            <p className="title" onClick={() => play(index)}>{trackInfo.name}</p>
+            <p className="track-title">{trackInfo.name}</p>
             <p className='artist-name'>{trackInfo.artists[0].name}</p>
           </div>
-            <p className='duration'>{trackInfo.duration_ms}</p>
+            <p className='duration'>{`${duration.getMinutes()}:${duration.getSeconds()}`}</p>
         </div>
       </div>
     );
   });
 
-  const album = (albumInfo) => {
+  const album = () => {
     return (
       <div className="album-info">
         <div className="album-image-main">
           <img
-            src={albumInfo.images[1].url}
-            className="album-image"
+            src={albumInfo[0].images[1].url}
+            className="album-image-info-page"
             alt="album cover"
           />
           <div className="album-main">
-            <p>{albumInfo.artists.name}</p>
-            <p>{albumInfo.name}</p>
+            <p className="category-album">Album</p>
+            <p className="album-name-info-page">{albumInfo[0].name}</p>
+            <p className='artist-name-header'>{albumInfo[0].artists[0].name}</p>
           </div>
         </div>
       </div>
     );
   };
+
+
 
   return (
     <div>
@@ -105,7 +115,7 @@ const AlbumsInfo = (props) => {
       <div  className="album-tracks-container">
       <div className="header"></div>
       <div>
-        <div>{album}</div>
+        <div>{albumInfo.length && album()}</div>
         <SideBar />
         <div className="bar-above-tracks">
           <p className="hash">#</p>
