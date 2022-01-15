@@ -1,24 +1,36 @@
 .shows-container {
   color: white;
-  position: absolute;
-  top: 10%;
-  left: 22%;
   display: flex;
   flex-wrap: wrap;
-  background-color: #0a0908;
   border-radius: 2%;
+  flex-direction: column;
 }
 
 .shows {
   display: flex;
-  flex-direction: column;
-  
+  flex-direction: row;
+  width: 80vw;
+  margin-left: 20vw;
+  height: 60vh;
+  justify-content: space-between;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.publisher {
+  color: #a5a58d;
+}
+
+.category {
+  display: flex;
 }
 
 .shows-image {
   height: 200px;
   width: 200px;
-  border-radius: 2%;
+  border-radius: 4%;
   box-shadow: 5px 5px 8px black;
 }
 
@@ -28,12 +40,12 @@
   height: 350px;
   width: 250px;
   display: flex;
-  flex-direction: row;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   border-radius: 2%;
   margin-bottom: 20px;
+  margin-right: 10px;
 }
 
 .shows-preview:hover {
