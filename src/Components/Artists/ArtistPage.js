@@ -6,12 +6,13 @@ import SideBar from "../SideBar/SideBar";
 import ArtistHeader from "./ArtistHeader";
 import ArtistTopTracks from "./ArtistTopTracks";
 import ArtistAlbums from "./ArtistAlbums";
+import RelatedArtists from "./RelatedArtists";
 import "./ArtistPage.css";
 
 const ArtistPage = (props) => {
   const token = useToken();
   const [artist, setArtist] = useState([]);
-  console.log(artist);
+  // console.log(artist)
 
   useEffect(() => {
     try {
@@ -28,16 +29,15 @@ const ArtistPage = (props) => {
   }, [token, props.match.params.id]);
 
   const headerMap = artist.map(({ name, images }) => {
-    return (
-      <ArtistHeader name={name} images={images} />
-    )
-  })
+    return <ArtistHeader name={name} images={images} />;
+  });
 
   return (
     <div className="artist-page">
       {headerMap}
-      <ArtistTopTracks id={props.match.params.id}/>
-      <ArtistAlbums id={props.match.params.id}/>
+      <ArtistTopTracks id={props.match.params.id} />
+      <ArtistAlbums id={props.match.params.id} />
+      <RelatedArtists id={props.match.params.id} />
       <TopNav />
       <SideBar />
     </div>

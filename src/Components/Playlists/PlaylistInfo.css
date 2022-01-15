@@ -27,7 +27,6 @@
   white-space: pre;
   text-overflow: ellipsis;
   overflow: hidden;
-  z-index: 1;
 }
 
 .playlist {
@@ -87,4 +86,13 @@
 
 .list-album-duration {
   width: 5vw;
+}
+
+.playlist-artist-name {
+  text-decoration: none;
+  color: white;
+}
+
+.playlist-artist-name:hover {
+  text-decoration: underline;
 }

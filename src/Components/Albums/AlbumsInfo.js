@@ -75,7 +75,7 @@ const AlbumsInfo = (props) => {
     }
 
     return (
-      <div key={index} onClick={() => play(index)} className="track-container">
+      <div key={index} onClick={() => play(index)} className="track-container-album-info">
         <p>{index + 1}</p>
         <div className="track-info">
           <div className="album-tracks">
@@ -91,7 +91,7 @@ const AlbumsInfo = (props) => {
   const album = () => {
     return (
       <div className="album-info">
-        <div className="album-image-main">
+        <div className="album-info-image-main">
           <img
             src={albumInfo[0].images[1].url}
             className="album-image-info-page"

@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useToken, SpotifyURL } from "../../utils";
 import { Link } from "react-router-dom";
+import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
 import "./ArtistPage.css";
 
 const ArtistTopTracks = ({ id }) => {
   const token = useToken();
   const [tracks, setTracks] = useState([]);
+  const [uriList, setUriList] = useState([]);
+  const [device, setDevice] = useState("");
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     try {
@@ -16,37 +20,111 @@ const ArtistTopTracks = ({ id }) => {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then(({ data }) => setTracks(data.tracks));
+        .then(({ data }) => {
+          setTracks(data.tracks);
+          const uris = data.tracks.reduce((acc, curr) => {
+            acc.push(curr.uri);
+            return acc;
+          }, []);
+          setUriList(uris);
+        });
     } catch (err) {
       console.log(err);
     }
   }, [token, id]);
-  console.log(tracks);
+
+  const play = async (position) => {
+    try {
+      const req = await axios.get(`${SpotifyURL}/me/player/devices`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await axios.put(
+        `${SpotifyURL}/me/player/play?device_id=${req.data.devices[0].id}`,
+        {
+          uris: uriList,
+          offset: {
+            position: +position,
+          },
+          position_ms: 0,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setToggle(!toggle);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const pause = async () => {
+    try {
+      const req = await axios.get(`${SpotifyURL}/me/player/devices`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      await axios.put(
+        `${SpotifyURL}/me/player/pause?device_id=${req.data.devices[0].id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setToggle(!toggle);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const topTracks = tracks.map((track, index) => {
     const duration = new Date(track.duration_ms);
     if (index < 5) {
       return (
-        <Link to={`/albums/${track.album.id}`} className="link" key={index}>
-          <div className="top-track">
-            <div className="top-track-1">
-              <p>{index + 1}</p>
+        <div className="top-track">
+          <div className="top-track-1">
+            <p className="top-track-index" onClick={() => play(index)}>
+              {index + 1}
+            </p>
+            <Link to={`/album/${track.album.id}`} className="link" key={index}>
               <img
                 src={track.album.images[2].url}
                 alt="album art"
                 className="top-track-img"
               />
-            </div>
-            <p className="top-track-name">{track.name}</p>
-            <p className="top-track-duration">{`${duration.getMinutes()} : ${duration.getSeconds()}`}</p>
+            </Link>
           </div>
-        </Link>
+          <p className="top-track-name">{track.name}</p>
+          <p className="top-track-duration">{`${duration.getMinutes()} : ${duration.getSeconds()}`}</p>
+        </div>
       );
     } else return null;
   });
 
   return (
     <div className="top-tracks-container">
+      <div className="settings">
+        {toggle ? (
+          <BsFillPlayCircleFill
+            className="play-button"
+            onClick={() => play(0)}
+          />
+        ) : (
+          <BsFillPauseCircleFill
+            className="play-button"
+            onClick={() => pause()}
+          />
+        )}
+        <button className="following-button" onClick={pause}>
+          FOLLOWING
+        </button>
+      </div>
       <h1>Popular</h1>
       {topTracks}
     </div>

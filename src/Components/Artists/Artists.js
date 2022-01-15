@@ -3,17 +3,17 @@ import SideBar from "../SideBar/SideBar";
 import { Link } from "react-router-dom";
 import TopNavLibrary from "../TopNav/TopNavLibrary";
 import axios from "axios";
-import { useToken } from "../../utils";
+import { useToken, SpotifyURL } from "../../utils";
 import "./Artists.css";
 
 const ArtistsComponent = (props) => {
   const [list, setList] = useState([]);
   const token = useToken();
-  // console.log(list);
+  
   useEffect(() => {
     try {
       axios
-        .get("https://api.spotify.com/v1/me/following?type=artist", {
+        .get(`${SpotifyURL}/me/following?type=artist`, {
           params: { limit: 20, offset: 0 },
           headers: {
             Authorization: `Bearer ${token}`,
@@ -31,7 +31,7 @@ const ArtistsComponent = (props) => {
         <div  key={list.id}  className="following-artists">
           <img className="artist-image" src={list.images[2].url} />
           <div className="artist-info">
-            <h3 className="artist-name">{list.name}</h3>
+            <h3 className="artist-preview-name">{list.name}</h3>
             <p className="artist">Artist</p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useToken, SpotifyURL } from "../../utils";
+import { Link } from "react-router-dom";
 import "./ArtistPage.css";
 
 const ArtistAlbums = ({ id }) => {
@@ -23,34 +24,28 @@ const ArtistAlbums = ({ id }) => {
       console.log(err);
     }
   }, [token, id]);
-  console.log(albums);
-
-  // const playlistMap = list.map((list) => {
-  //   return (
-  //     <Link to={`/playlist/${list.id}`}  key={list.id} className="playlist-preview">
-  //       <div>
-  //         <img className="playlist-image" src={list.images[0].url} alt="playlist" />
-  //         <h3>{list.name}</h3>
-  //         <p className="playlist-description">{list.description}</p>
-  //       </div>
-  //     </Link>
-  //   );
-  // });
 
   const artistAlbums = albums.map((album, index) => {
+    const releaseYear = album.release_date.slice(0, 4);
     return (
-      <div>
-        <img src={album.images[1].url} alt="album art" />
-        <h3>{album.name}</h3>
-        <p>{album.release_date}</p>
-      </div>
-    )
-  })
+      <Link to={`/album/${album.id}`} className="artist-album-container">
+        <div key={index}>
+          <img
+            src={album.images[1].url}
+            alt="album art"
+            className="artist-album-image"
+          />
+          <h3 className="artist-album-name">{album.name}</h3>
+          <p>{releaseYear} * Album</p>
+        </div>
+      </Link>
+    );
+  });
 
   return (
     <div className="artist-albums">
       <h1>Albums</h1>
-      {artistAlbums}
+      <div className="artist-album-info">{artistAlbums}</div>
     </div>
   );
 };

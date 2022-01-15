@@ -7,7 +7,7 @@
   height: 100vh;
 }
 
-.track-container {
+.track-container-album-info {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -35,7 +35,7 @@
   height: 20vh;
 }
 
-.album-image-main {
+.album-info-image-main {
   display: flex;
   flex-direction: row;
 }
