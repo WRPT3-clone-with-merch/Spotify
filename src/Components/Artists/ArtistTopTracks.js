@@ -179,7 +179,7 @@ const ArtistTopTracks = ({ id }) => {
             FOLLOWING
           </button>
         ) : (
-          <button className="following-button" onClick={follow}>
+          <button className="follow-button" onClick={follow}>
             FOLLOW
           </button>
         )}

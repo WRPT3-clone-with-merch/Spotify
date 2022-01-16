@@ -16,12 +16,13 @@ const ArtistPage = (props) => {
   useEffect(() => {
     try {
       axios
-        .get(`${SpotifyURL}/artists/${props.match.params.id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => setArtist([data]));
+      .get(`${SpotifyURL}/artists/${props.match.params.id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(({ data }) => setArtist([data]));
+      window.scrollTo(0, 0);
     } catch (err) {
       console.log(err);
     }

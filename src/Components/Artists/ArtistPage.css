@@ -129,6 +129,11 @@
   width: 7vw;
   color: #1D8954;
   cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.play-button:hover {
+  transform: scale(1.1);
 }
 
 .settings {
@@ -139,9 +144,24 @@
   margin-left: -2vw;
 }
 
+.follow-button {
+  font-weight: bold;
+  height: 3.75vh;
+  width: 5vw;
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 8%;
+  cursor: pointer;
+}
+
+.follow-button:hover {
+  border: 1px solid white;
+}
+
 .following-button {
   font-weight: bold;
-  height: 3.5vh;
+  height: 3.75vh;
   width: 7vw;
   background-color: transparent;
   color: white;
