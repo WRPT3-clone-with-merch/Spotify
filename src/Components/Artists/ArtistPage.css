@@ -67,7 +67,7 @@
 .artist-albums {
   color: white;
   position: absolute;
-  top: 100%;
+  top: 105%;
   left: 22%;
 }
 
@@ -145,4 +145,11 @@
   color: white;
   border: 1px solid white;
   border-radius: 8%;
+}
+
+.track-play-icon {
+  height: 5.5vh;
+  width: 5.5vw;
+  position: absolute;
+  left: -0.1vw;
 }

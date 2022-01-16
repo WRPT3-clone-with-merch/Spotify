@@ -2,15 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useToken, SpotifyURL } from "../../utils";
 import { Link } from "react-router-dom";
-import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
+import {
+  BsFillPlayCircleFill,
+  BsFillPauseCircleFill,
+  BsPlayFill,
+} from "react-icons/bs";
 import "./ArtistPage.css";
 
 const ArtistTopTracks = ({ id }) => {
   const token = useToken();
   const [tracks, setTracks] = useState([]);
   const [uriList, setUriList] = useState([]);
-  const [device, setDevice] = useState("");
   const [toggle, setToggle] = useState(true);
+  const [following, setFollowing] = useState([]);
+  const [isShown, setIsShown] = useState(false);
+  const [trackIndex, setTrackIndex] = useState("");
 
   useEffect(() => {
     try {
@@ -28,10 +34,63 @@ const ArtistTopTracks = ({ id }) => {
           }, []);
           setUriList(uris);
         });
+      axios
+        .get(`${SpotifyURL}/me/following/contains?type=artist&ids=${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }) => setFollowing(data));
     } catch (err) {
       console.log(err);
     }
   }, [token, id]);
+
+  const follow = async () => {
+    try {
+      axios.put(
+        `${SpotifyURL}/me/following?type=artist&ids=${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const req = await axios.get(
+        `${SpotifyURL}/me/following/contains?type=artist&ids=${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setFollowing(req.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const unfollow = async () => {
+    try {
+      axios.delete(`${SpotifyURL}/me/following?type=artist&ids=${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const req = await axios.get(
+        `${SpotifyURL}/me/following/contains?type=artist&ids=${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setFollowing(req.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const play = async (position) => {
     try {
@@ -89,9 +148,7 @@ const ArtistTopTracks = ({ id }) => {
       return (
         <div className="top-track">
           <div className="top-track-1">
-            <p className="top-track-index" onClick={() => play(index)}>
-              {index + 1}
-            </p>
+            <p className="top-track-index" onClick={() => play(index)}>{index + 1}</p>
             <Link to={`/album/${track.album.id}`} className="link" key={index}>
               <img
                 src={track.album.images[2].url}
@@ -121,9 +178,15 @@ const ArtistTopTracks = ({ id }) => {
             onClick={() => pause()}
           />
         )}
-        <button className="following-button" onClick={pause}>
-          FOLLOWING
-        </button>
+        {following[0] ? (
+          <button className="following-button" onClick={unfollow}>
+            FOLLOWING
+          </button>
+        ) : (
+          <button className="following-button" onClick={follow}>
+            FOLLOW
+          </button>
+        )}
       </div>
       <h1>Popular</h1>
       {topTracks}

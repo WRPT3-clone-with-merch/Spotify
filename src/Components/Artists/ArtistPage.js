@@ -12,7 +12,6 @@ import "./ArtistPage.css";
 const ArtistPage = (props) => {
   const token = useToken();
   const [artist, setArtist] = useState([]);
-  // console.log(artist)
 
   useEffect(() => {
     try {
