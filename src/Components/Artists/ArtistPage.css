@@ -116,6 +116,7 @@
 
 .related-artist-image {
   height: 175px;
+  max-width: 175px;
   border-radius: 50%;
 }
 
@@ -127,6 +128,7 @@
   height: 7vh;
   width: 7vw;
   color: #1D8954;
+  cursor: pointer;
 }
 
 .settings {
@@ -145,6 +147,7 @@
   color: white;
   border: 1px solid white;
   border-radius: 8%;
+  cursor: pointer;
 }
 
 .track-play-icon {

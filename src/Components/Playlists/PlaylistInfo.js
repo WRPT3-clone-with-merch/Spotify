@@ -77,6 +77,7 @@ const PlaylistInfo = (props) => {
   const infoMap = playlistInfo.map((playlist, index) => {
     const duration = new Date(playlist.track.duration_ms);
     const dateAdded = new Date(playlist.added_at);
+    const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
     const { id, name } = playlist.track.artists[0];
 
     return (
@@ -98,7 +99,7 @@ const PlaylistInfo = (props) => {
         </div>
         <p className="list-album-name">{playlist.track.album.name}</p>
         <p>{`${dateAdded.getDay()} days ago`}</p>
-        <p className="list-album-duration">{`${duration.getMinutes()}:${duration.getSeconds()}`}</p>
+        <p className="list-album-duration">{`${duration.getMinutes()} : ${seconds}`}</p>
       </div>
     );
   });

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import {
   BsFillPlayCircleFill,
   BsFillPauseCircleFill,
-  BsPlayFill,
 } from "react-icons/bs";
 import "./ArtistPage.css";
 
@@ -15,8 +14,6 @@ const ArtistTopTracks = ({ id }) => {
   const [uriList, setUriList] = useState([]);
   const [toggle, setToggle] = useState(true);
   const [following, setFollowing] = useState([]);
-  const [isShown, setIsShown] = useState(false);
-  const [trackIndex, setTrackIndex] = useState("");
 
   useEffect(() => {
     try {
@@ -48,7 +45,7 @@ const ArtistTopTracks = ({ id }) => {
 
   const follow = async () => {
     try {
-      axios.put(
+      await axios.put(
         `${SpotifyURL}/me/following?type=artist&ids=${id}`,
         {},
         {
@@ -57,15 +54,14 @@ const ArtistTopTracks = ({ id }) => {
           },
         }
       );
-      const req = await axios.get(
+      axios.get(
         `${SpotifyURL}/me/following/contains?type=artist&ids=${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
-      );
-      setFollowing(req.data);
+      ).then(({ data }) => setFollowing(data))
     } catch (err) {
       console.log(err);
     }
@@ -73,20 +69,19 @@ const ArtistTopTracks = ({ id }) => {
 
   const unfollow = async () => {
     try {
-      axios.delete(`${SpotifyURL}/me/following?type=artist&ids=${id}`, {
+      await axios.delete(`${SpotifyURL}/me/following?type=artist&ids=${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      const req = await axios.get(
+      axios.get(
         `${SpotifyURL}/me/following/contains?type=artist&ids=${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
-      );
-      setFollowing(req.data);
+      ).then(({ data }) => setFollowing(data))
     } catch (err) {
       console.log(err);
     }
@@ -144,6 +139,7 @@ const ArtistTopTracks = ({ id }) => {
 
   const topTracks = tracks.map((track, index) => {
     const duration = new Date(track.duration_ms);
+    const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
     if (index < 5) {
       return (
         <div className="top-track">
@@ -158,7 +154,7 @@ const ArtistTopTracks = ({ id }) => {
             </Link>
           </div>
           <p className="top-track-name">{track.name}</p>
-          <p className="top-track-duration">{`${duration.getMinutes()} : ${duration.getSeconds()}`}</p>
+          <p className="top-track-duration">{`${duration.getMinutes()} : ${seconds}`}</p>
         </div>
       );
     } else return null;

@@ -14,7 +14,7 @@ const ArtistsComponent = (props) => {
     try {
       axios
         .get(`${SpotifyURL}/me/following?type=artist`, {
-          params: { limit: 20, offset: 0 },
+          params: { limit: 30, offset: 0 },
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -29,7 +29,7 @@ const ArtistsComponent = (props) => {
     return (
       <Link to={`/artist/${list.id}`} id="artist-link">
         <div  key={list.id}  className="following-artists">
-          <img className="artist-image" src={list.images[2].url} />
+          <img className="artist-image" src={list.images[2].url} alt="artist"/>
           <div className="artist-info">
             <h3 className="artist-preview-name">{list.name}</h3>
             <p className="artist">Artist</p>

@@ -33,18 +33,6 @@ const WebPlayback = (props) => {
 
       setPlayer(player);
 
-      const track = {
-        name: '',
-        album: {
-          images: [
-            { url: ''}
-          ],
-        },
-        artists: [
-          {name: ''}
-        ]
-      }
-
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
       });
