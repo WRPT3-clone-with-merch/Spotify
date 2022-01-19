@@ -21,7 +21,7 @@ const LandingPageComponent = (props) => {
     "user-read-currently-playing",
     "user-read-recently-played",
     "playlist-read-private",
-    "user-top-read"
+    "user-top-read",
   ];
 
   const handleLogin = () => {

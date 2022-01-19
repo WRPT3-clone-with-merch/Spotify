@@ -23,14 +23,6 @@ const TopNavComponent = (props) => {
     }
   }, [token]);
 
-  // const back = () => {
-  //   try {
-  //     history.goBack();
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
-
   return (
     <div className="top-nav">
       <div className="back-forward-arrows">

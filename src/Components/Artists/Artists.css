@@ -1,51 +1,47 @@
 .artist-container {
   color: white;
   display: flex;
-  flex-direction: row;
-  width: 60vw;
-  flex-wrap: wrap;
-  /* padding-top: 30%; */
-  height: 600px;
-  justify-content: space-between;
+  flex-flow: row wrap;
+  width: 80vw;
+  height: 70vh;
+  margin-left: 20vw;
+  justify-content: space-evenly;
+  text-decoration: none;
 }
 
 .category {
   color: white;
 }
 
-.artist-name {
-  display: flex;
-  justify-content: center;
-}
-
 .artist-category {
   color: white;
-  margin-left: 20px;
+  margin-left: 22vw;
   font-size: larger;
   font-weight: bold;
   display: flex;
   flex-direction: column;
-  padding-top: 50px;
 }
 
 .artist-image {
-  height: 200px;
-  width: 200px;
+  height: 175px;
+  width: 175px;
   border-radius: 50%;
   box-shadow: 5px 5px 8px black;
 }
 
 .following-artists {
-  background-color: #0a0908;
-  height: 350px;
-  width: 250px;
+  background-color: #1b1a1a;
+  height: 35vh;
+  width: 13vw;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  margin-right: 15px;
   border-radius: 2%;
   margin-bottom: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 .following-artists:hover {
@@ -53,6 +49,25 @@
   cursor: pointer;
 }
 
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.artist-preview-name {
+  width: 12vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
 .artist {
   color: #a5a58d;
+
+}
+
+#artist-link {
+  text-decoration: none;
 }

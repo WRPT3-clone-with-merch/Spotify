@@ -87,3 +87,12 @@
 .list-album-duration {
   width: 5vw;
 }
+
+.playlist-artist-name {
+  text-decoration: none;
+  color: white;
+}
+
+.playlist-artist-name:hover {
+  text-decoration: underline;
+}
