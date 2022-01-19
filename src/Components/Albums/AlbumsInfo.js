@@ -76,7 +76,7 @@ const AlbumsInfo = (props) => {
 
     return (
       <div key={index} onClick={() => play(index)} className="track-container-album-info">
-        <p>{index + 1}</p>
+        <p className='track-number-album-page'>{index + 1}</p>
         <div className="track-info">
           <div className="album-tracks">
             <p className="track-title">{trackInfo.name}</p>
