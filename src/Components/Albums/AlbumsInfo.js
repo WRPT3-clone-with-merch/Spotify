@@ -91,7 +91,7 @@ const AlbumsInfo = (props) => {
   const album = () => {
     return (
       <div className="album-info">
-        <div className="album-image-main">
+        <div className="album-info-image-main">
           <img
             src={albumInfo[0].images[1].url}
             className="album-image-info-page"

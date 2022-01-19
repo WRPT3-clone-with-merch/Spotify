@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos} from "react-icons/md";
-import {BsSearch} from "react-icons/bs";
+import {
+  MdOutlineArrowBackIosNew,
+  MdOutlineArrowForwardIos,
+} from "react-icons/md";
+import { BsSearch } from "react-icons/bs";
 import { useToken, SpotifyURL } from "../../utils";
 import SearchComponent from "../Search/Search";
 import "./TopNav.css";
@@ -28,6 +31,8 @@ const TopNavSearchComponent = (props) => {
     }
   }, [token]);
 
+  
+
   const handleSearch = async () => {
     try {
       const req = await axios.get(
@@ -36,7 +41,12 @@ const TopNavSearchComponent = (props) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-          params: { market: "US", limit: 5, offset: 0, include_external: "audio"},
+          params: {
+            market: "US",
+            limit: 5,
+            offset: 0,
+            include_external: "audio",
+          },
         }
       );
       setSearchPlaylists(req.data.playlists.items);
@@ -71,7 +81,11 @@ const TopNavSearchComponent = (props) => {
           <button className="user-btn">{user.display_name}</button>
         </div>
       </nav>
-      <SearchComponent albums={searchAlbum} artists={searchArtist} playlists={searchPlaylists} />
+      <SearchComponent
+        albums={searchAlbum}
+        artists={searchArtist}
+        playlists={searchPlaylists}
+      />
     </div>
   );
 };

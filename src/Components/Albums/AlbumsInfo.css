@@ -40,7 +40,7 @@
   height: 20vh;
 }
 
-.album-image-main {
+.album-info-image-main {
   display: flex;
   flex-direction: row;
 }

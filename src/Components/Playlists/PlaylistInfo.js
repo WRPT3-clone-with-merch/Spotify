@@ -4,6 +4,7 @@ import SideBar from "../SideBar/SideBar";
 import PlaylistHeader from "./PlaylistHeader";
 import TopNav from "../TopNav/TopNav";
 import { useToken, SpotifyURL } from "../../utils";
+import { Link } from "react-router-dom";
 import "./PlaylistInfo.css";
 
 const PlaylistInfo = (props) => {
@@ -11,7 +12,6 @@ const PlaylistInfo = (props) => {
   const [header, setHeader] = useState([]);
   const [uriList, setUriList] = useState([]);
   const token = useToken();
-
 
   useEffect(() => {
     try {
@@ -77,6 +77,8 @@ const PlaylistInfo = (props) => {
   const infoMap = playlistInfo.map((playlist, index) => {
     const duration = new Date(playlist.track.duration_ms);
     const dateAdded = new Date(playlist.added_at);
+    const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
+    const { id, name } = playlist.track.artists[0];
 
     return (
       <div key={index} className="track-container">
@@ -90,12 +92,14 @@ const PlaylistInfo = (props) => {
           />
           <div className="track-main">
             <p>{playlist.track.name}</p>
-            <p>{playlist.track.artists[0].name}</p>
+            <Link to={`/artist/${id}`} className="playlist-artist-name">
+              <p>{name}</p>
+            </Link>
           </div>
         </div>
         <p className="list-album-name">{playlist.track.album.name}</p>
         <p>{`${dateAdded.getDay()} days ago`}</p>
-        <p className="list-album-duration">{`${duration.getMinutes()}:${duration.getSeconds()}`}</p>
+        <p className="list-album-duration">{`${duration.getMinutes()} : ${seconds}`}</p>
       </div>
     );
   });

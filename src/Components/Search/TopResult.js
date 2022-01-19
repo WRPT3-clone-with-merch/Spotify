@@ -6,8 +6,8 @@ const TopResult = ({ artists }) => {
   const topArtist = artists.map((artist, index) => {
     if (index === 0) {
       return (
-        <Link to={`/artist/${artist.id}`} className="top-result-link">
-          <div key={index} className="top-result">
+        <Link to={`/artist/${artist.id}`} className="top-result-link" key={index}>
+          <div  className="top-result">
             <img className="top-image" src={artist.images[2].url} alt="artist-icon" />
             <div className="top-text">
               <h1>{artist.name}</h1>
@@ -16,7 +16,7 @@ const TopResult = ({ artists }) => {
           </div>
         </Link>
       );
-    }
+    } else return null;
   });
 
   return <div>{topArtist}</div>;

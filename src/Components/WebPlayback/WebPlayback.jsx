@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import "./WebPlayback.css";
 
 const track = {
@@ -33,18 +32,6 @@ const WebPlayback = (props) => {
       });
 
       setPlayer(player);
-
-      const track = {
-        name: '',
-        album: {
-          images: [
-            { url: ''}
-          ],
-        },
-        artists: [
-          {name: ''}
-        ]
-      }
 
       player.addListener("ready", ({ device_id }) => {
         console.log("Ready with Device ID", device_id);
