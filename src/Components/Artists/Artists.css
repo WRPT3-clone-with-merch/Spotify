@@ -1,21 +1,16 @@
 .artist-container {
   color: white;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   width: 80vw;
+  height: 70vh;
   margin-left: 20vw;
-  flex-wrap: wrap;
-  height: 60vh;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  text-decoration: none;
 }
 
 .category {
   color: white;
-}
-
-.artist-name {
-  display: flex;
-  justify-content: center;
 }
 
 .artist-category {
@@ -28,23 +23,25 @@
 }
 
 .artist-image {
-  height: 200px;
-  width: 200px;
+  height: 175px;
+  width: 175px;
   border-radius: 50%;
   box-shadow: 5px 5px 8px black;
 }
 
 .following-artists {
-  background-color: #0a0908;
-  height: 350px;
-  width: 250px;
+  background-color: #1b1a1a;
+  height: 35vh;
+  width: 13vw;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  margin-right: 15px;
   border-radius: 2%;
   margin-bottom: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 .following-artists:hover {
@@ -52,6 +49,25 @@
   cursor: pointer;
 }
 
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.artist-preview-name {
+  width: 12vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
 .artist {
   color: #a5a58d;
+
+}
+
+#artist-link {
+  text-decoration: none;
 }
