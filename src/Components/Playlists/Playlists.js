@@ -26,15 +26,19 @@ const Playlists = (props) => {
   }, [token]);
 
   const playlistMap = list.map((list) => {
-    return (
-      <Link to={`/playlist/${list.id}`}  key={list.id} className="playlist-preview">
-        <div>
-          <img className="playlist-image" src={list.images[0].url} alt="playlist" />
-          <h3 className='playlist-name'>{list.name}</h3>
-          <p className="playlist-description">{list.description}</p>
-        </div>
-      </Link>
-    );
+    const { id, name, description, images } = list;
+
+    if(images.length !== 0){
+      return (
+        <Link to={`/playlist/${id}`}  key={id} className="playlist-preview">
+          <div>
+            <img className="playlist-image" src={images[0].url} alt="playlist" />
+            <h3 className='playlist-name'>{name}</h3>
+            <p className="playlist-description">{description}</p>
+          </div>
+        </Link>
+      )
+    } else return null;
   });
 
   return (

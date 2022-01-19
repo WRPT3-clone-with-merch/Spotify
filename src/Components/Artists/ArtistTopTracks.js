@@ -138,22 +138,24 @@ const ArtistTopTracks = ({ id }) => {
   };
 
   const topTracks = tracks.map((track, index) => {
+    const { album, name } = track;
     const duration = new Date(track.duration_ms);
     const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
+    
     if (index < 5) {
       return (
         <div className="top-track">
           <div className="top-track-1">
             <p className="top-track-index" onClick={() => play(index)}>{index + 1}</p>
-            <Link to={`/album/${track.album.id}`} className="link" key={index}>
+            <Link to={`/album/${album.id}`} className="link" key={index}>
               <img
-                src={track.album.images[2].url}
+                src={album.images[2].url}
                 alt="album art"
                 className="top-track-img"
               />
             </Link>
           </div>
-          <p className="top-track-name">{track.name}</p>
+          <p className="top-track-name">{name}</p>
           <p className="top-track-duration">{`${duration.getMinutes()} : ${seconds}`}</p>
         </div>
       );
@@ -184,7 +186,7 @@ const ArtistTopTracks = ({ id }) => {
           </button>
         )}
       </div>
-      <h1>Popular</h1>
+      <h2>Popular</h2>
       {topTracks}
     </div>
   );
