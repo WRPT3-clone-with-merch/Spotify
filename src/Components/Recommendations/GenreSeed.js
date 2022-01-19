@@ -3,7 +3,6 @@ import SideBar from "../SideBar/SideBar";
 import TopNavLibrary from "../TopNav/TopNavLibrary";
 import axios from "axios";
 import { useToken } from "../../utils";
-import { Link } from "react-router-dom";
 
 const GenreSeed = props => {
 	const  [genre, setGenre] = useState([]);
@@ -11,32 +10,33 @@ const GenreSeed = props => {
 
 	useEffect(() => {
 		try {
-			axios.get(`https://api.spotify.com/v1/recommendations/available-genre-seeds`)
-			.then(res => setGenre(res.data))
+			axios.get(`https://api.spotify.com/v1/recommendations?seed_genres=country`)
+			.then((res) => setGenre(res.data))
 		}
+		
 		catch (err) {
       console.log(err);
     };
 	}, [token]);
 
-	let genreMao = genre.map(genre => {
+	let genreMap = genre.map(genre => {
 		return(
 			<ul>
 				<li>{genre}</li>
 			</ul>
 		)
 	})
+	console.log(genre)
 
 	return (
 		<div >
 			<div >
-				{genre}
+				{genreMap}
 				<SideBar />
 				<TopNavLibrary />
 			</div>
 		</div>
 	);
 	};
-
 	
 	export default GenreSeed;
