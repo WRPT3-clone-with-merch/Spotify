@@ -63,16 +63,9 @@ const AlbumsInfo = (props) => {
     }
   };
 
-  console.log(albumInfo);
-  console.log(trackInfo);
-
   const infoMap = trackInfo.map((trackInfo, index) => {
     const duration = new Date(trackInfo.duration_ms);
-    const leadingZero = (duration) => {
-      return (
-        duration.getSeconds() < 10 ? '0' : ''
-      )
-    }
+    const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
 
     return (
       <div key={index} onClick={() => play(index)} className="track-container-album-info">
@@ -82,7 +75,7 @@ const AlbumsInfo = (props) => {
             <p className="track-title">{trackInfo.name}</p>
             <p className='artist-name'>{trackInfo.artists[0].name}</p>
           </div>
-            <p className='duration'>{`${duration.getMinutes()}:${duration.getSeconds()}`}</p>
+            <p className='duration'>{`${duration.getMinutes()}:${seconds}`}</p>
         </div>
       </div>
     );

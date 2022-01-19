@@ -14,6 +14,7 @@ const HomePageComponent = (props) => {
   const token = useToken();
   const [playlist, setPlaylist] = useState([]);
   const [artists, setArtists] = useState([]);
+  const [shows, setShows] = useState([]);
 
   const greeting = () => {
     if(today.getHours() <= 11){
@@ -29,7 +30,7 @@ const HomePageComponent = (props) => {
     try {
       axios
         .get(`${SpotifyURL}/me/playlists`, {
-          params: { limit: 10, offset: 0 },
+          params: { limit: 3, offset: 0 },
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -37,16 +38,25 @@ const HomePageComponent = (props) => {
         .then(({ data }) => setPlaylist(data.items));
         axios
         .get("https://api.spotify.com/v1/me/following?type=artist", {
-          params: { limit: 20, offset: 0 },
+          params: { limit: 3, offset: 0 },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then(({ data }) => setArtists(data.artists.items));
+        axios.get(`${SpotifyURL}/me/shows`, {
+          params: { limit: 5, offset: 0 },
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        })
+        .then(({ data }) => setShows(data.items));
     } catch (err) {
       console.log(err);
     }
   }, [token]);
+
+  console.log(shows);
 
   const playlistMap = playlist.map((playlist) => {
     return (
@@ -58,6 +68,20 @@ const HomePageComponent = (props) => {
       </Link>
     );
   });
+
+  const showsMap = shows.map((shows) => {
+    return (
+      <Link to={`/shows/${shows.show.id}`}
+      className="playlist-link-home-page">
+        <div key={shows.show.id} className='home-page-shows'>
+          <img className='home-page-show-image' src={shows.show.images[1].url} alt='shows' />
+          <h3 className='home-page-show-name'>
+            {shows.show.name}
+          </h3>
+        </div>
+      </Link>
+    )
+  })
 
   const artistsMap = artists.map((artists) => {
     return (
@@ -78,6 +102,10 @@ const HomePageComponent = (props) => {
       <div className='home-page-user-content'>
         {playlistMap}
         {artistsMap}
+        </div>
+          <h3 className='category-home-page'>Shows for you</h3>
+        <div className='home-page-shows-container'>
+        {showsMap}
       </div>
       <SideBar />
       <TopNav />
