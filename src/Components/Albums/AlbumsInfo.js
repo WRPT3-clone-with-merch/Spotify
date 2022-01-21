@@ -63,9 +63,6 @@ const AlbumsInfo = (props) => {
     }
   };
 
-  console.log(albumInfo);
-  console.log(trackInfo);
-
   const infoMap = trackInfo.map((trackInfo, index) => {
     const duration = new Date(trackInfo.duration_ms);
     const leadingZero = (duration) => {

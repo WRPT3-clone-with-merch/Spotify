@@ -26,16 +26,18 @@ const ArtistAlbums = ({ id }) => {
   }, [token, id]);
 
   const artistAlbums = albums.map((album, index) => {
+    const { id, images, name } = album;
     const releaseYear = album.release_date.slice(0, 4);
+
     return (
-      <Link to={`/album/${album.id}`} className="artist-album-container">
+      <Link to={`/album/${id}`} className="artist-album-container">
         <div key={index}>
           <img
-            src={album.images[1].url}
+            src={images[1].url}
             alt="album art"
             className="artist-album-image"
           />
-          <h3 className="artist-album-name">{album.name}</h3>
+          <h3 className="artist-album-name">{name}</h3>
           <p>{releaseYear} * Album</p>
         </div>
       </Link>
@@ -44,7 +46,7 @@ const ArtistAlbums = ({ id }) => {
 
   return (
     <div className="artist-albums">
-      <h1>Albums</h1>
+      <h2>Albums</h2>
       <div className="artist-album-info">{artistAlbums}</div>
     </div>
   );

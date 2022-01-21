@@ -4,7 +4,7 @@ import { useToken, SpotifyURL } from "../../utils";
 import { Link } from "react-router-dom";
 import "./SideBar.css";
 
-const SideBarPlaylist = (props) => {
+const SideBarPlaylist = () => {
   const [list, setList] = useState([]);
   const token = useToken();
 
@@ -21,11 +21,13 @@ const SideBarPlaylist = (props) => {
   }, [token]);
 
   const listMap = list.map((list) => {
+    const { id, name } = list;
+
     return (
-      <div key={list.id}>
+      <div key={id}>
         <ul>
-          <Link to={`/playlist/${list.id}`} className="playlist-titles">
-            <li>{list.name}</li>
+          <Link to={`/playlist/${id}`} className="playlist-titles">
+            <li>{name}</li>
           </Link>
         </ul>
       </div>
