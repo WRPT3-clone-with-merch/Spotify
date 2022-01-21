@@ -4,7 +4,6 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import HomePage from './Components/HomePage/HomePage';
 import Merch from './Components/Merch/Merch';
 import LikedSongs from './Components/LikedSongs/LikedSongs';
-import CreatePlaylist from './Components/CreatePlaylist/CreatePlaylist';
 import Artists from './Components/Artists/Artists';
 import Albums from './Components/Albums/Albums';
 import Playlists from './Components/Playlists/Playlists';
@@ -26,7 +25,6 @@ export default (
     <Route path='/merch' component={Merch} />
     <Route path='/search' component={TopNavSearchComponent} />
     <Route path='/liked-songs' component={LikedSongs} />
-    <Route path='/create-playlist' component={CreatePlaylist} />
     <Route path='/artists' component={Artists} />
     <Route path='/artist/:id' component={ArtistPage} />
     <Route path='/albums' component={Albums} />

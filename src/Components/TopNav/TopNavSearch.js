@@ -31,8 +31,6 @@ const TopNavSearchComponent = (props) => {
     }
   }, [token]);
 
-  
-
   const handleSearch = async () => {
     try {
       const req = await axios.get(

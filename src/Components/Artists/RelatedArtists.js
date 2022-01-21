@@ -35,7 +35,7 @@ const RelatedArtists = ({ id }) => {
 
   return (
     <div className="related-artists">
-      <h1>Fans Also Like</h1>
+      <h2>Fans Also Like</h2>
       <div className="artist-album-info">{relatedArtists}</div>
     </div>
   )
