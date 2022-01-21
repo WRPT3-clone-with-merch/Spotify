@@ -5,6 +5,10 @@
   height: 100vh;
 }
 
+.home-page-link {
+  text-decoration: none;
+}
+
 .home-page-greeting {
   color: white;
   font-weight: bold;

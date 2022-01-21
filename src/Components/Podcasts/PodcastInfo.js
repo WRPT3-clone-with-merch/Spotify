@@ -26,13 +26,13 @@ const PodcastInfo = (props) => {
         }, []);
         setUriList(uris);
       });
-      axios.get(`${SpotifyURL}/me/shows/${props.match.params.id}`, {
-        params: {limit: 1, offset: 0 },
+      axios.get(`${SpotifyURL}/shows/${props.match.params.id}?market=US`, {
+        // params: {limit: 1, offset: 0 },
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(({ data }) => setShows(data.items));
+      .then(({ data }) => setShows(data));
     } catch (err) {
       console.log(err);
     }
@@ -66,37 +66,43 @@ const PodcastInfo = (props) => {
   };
 
   console.log(podcastInfo);
+  console.log(shows);
+  console.log(uriList);
 
   const infoMap = podcastInfo.map((podcastInfo, index) => {
     const duration = new Date(podcastInfo.duration_ms);
-    const dateAdded= new Date(podcastInfo.release_date);
+    const dateAdded= new Date(podcastInfo.release_date_precision);
     const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
 
     return (
       <div key={index} onClick={() => play(index)} className='podcast-info-container'>
         <div className='podcast-image-details'>
+        <p>{index + 1}</p>
           <img  className='podcast-main-image' src={podcastInfo.images[1].url} alt='podcast cover image' />
           <div className='podcast-description'>
             <p className='podcast-name-of-show'>{podcastInfo.name}</p>
-            <p className='podcast-description-info-page'>{podcastInfo.html_description}</p>
+            <p className='podcast-description-info-page' dangerouslySetInnerHTML={{ __html: podcastInfo.html_description }} />
+          <div className='date-added-duration'>
+            <p>{duration.getMinutes() + ' min' + ' ' + duration.getSeconds() + ' sec'}</p>
+          </div>
           </div>
         </div>
       </div>
     )
   }) 
 
-  const showsMap = shows.map((shows) => {
-    return (
-        <div className="shows-preview-info-page" key={shows.show.id}>
-          <img className='shows-image-info-page' src={shows.show.images[0].url} alt='shows' />
+  const showsMap = 
+      (
+        <div className="shows-preview-info-page" key={shows.id}>
+          <img className='shows-image-info-page' src={shows.images?.[0].url} alt='shows' />
           <div className='podcast-publisher-info'>
             <p>PODCAST</p>
-          <h3 className='show-name-info-page'>{shows.show.name}</h3>
-          <h4 className='publisher-info-page'>{shows.show.publisher}</h4>
+          <h3 className='show-name-info-page'>{shows.name}</h3>
+          <h4 className='publisher-info-page'>{shows.publisher}</h4>
           </div>
         </div>
-    )
-    });
+    );
+  
 
   return (
     <div>
@@ -105,6 +111,7 @@ const PodcastInfo = (props) => {
       <div className='podcast-info-header'>
         {showsMap}
       </div>
+      <h3 className='all-episodes'>All Episodes</h3>
       <div className='podcast-info-container'>
         {infoMap}
       </div>

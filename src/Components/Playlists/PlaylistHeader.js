@@ -118,7 +118,7 @@ const PlaylistHeader = ({ name, description, images, id, uriList }) => {
       <div className="header-info">
         <p>Playlist</p>
         <h1 className="header-name">{name}</h1>
-        <p className="header-description">{description}</p>
+        <p className="header-description" dangerouslySetInnerHTML={{ __html: description }} />
       </div>
       <div className="playlist-functions">
         {toggle ? (

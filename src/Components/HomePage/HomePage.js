@@ -71,7 +71,7 @@ const HomePageComponent = (props) => {
 
   const showsMap = shows.map((shows) => {
     return (
-      <Link to={`/shows/${shows.show.id}`}
+      <Link to={`/podcast/${shows.show.id}`}
       className="playlist-link-home-page">
         <div key={shows.show.id} className='home-page-shows'>
           <img className='home-page-show-image' src={shows.show.images[1].url} alt='shows' />
@@ -85,12 +85,14 @@ const HomePageComponent = (props) => {
 
   const artistsMap = artists.map((artists) => {
     return (
+      <Link to={`/artist/${artists.id}`} className='home-page-link'>
       <div className='home-page-following-artists' key={artists.id}>
         <img className='home-page-artist-image' src={artists.images[2].url} />
         <div className='home-page-artist-info'>
         <h3 className='home-page-name'>{artists.name}</h3>
         </div>
       </div>
+      </Link>
     )
   })
 
