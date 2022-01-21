@@ -26,7 +26,7 @@ const PodcastInfo = (props) => {
         }, []);
         setUriList(uris);
       });
-      axios.get(`${SpotifyURL}/me/shows`, {
+      axios.get(`${SpotifyURL}/me/shows/${props.match.params.id}`, {
         params: {limit: 1, offset: 0 },
         headers: {
           Authorization: `Bearer ${token}`,
