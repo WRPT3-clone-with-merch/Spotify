@@ -16,7 +16,6 @@ import DeleteTracks from './Components/Tracks/DeleteTracks';
 import SaveTracks from './Components/Tracks/SaveTracks';
 import TopNavSearchComponent from './Components/TopNav/TopNavSearch';
 import Recommendations from './Components/Recommendations/Recommendations';
-import GenreSeed from './Components/Recommendations/GenreSeed';
 import ArtistPage from './Components/Artists/ArtistPage';
 import AlbumsInfo from './Components/Albums/AlbumsInfo';
 
@@ -40,6 +39,5 @@ export default (
     <Route path='/tracks/:id' component={Track}/>
     <Route path='/save-track/:ids' component={SaveTracks}/>
     <Route path='/recommendations' component={Recommendations}/>
-    <Route path='/recommendations/available-genre-seeds' component={GenreSeed} />
   </BrowserRouter>
 );

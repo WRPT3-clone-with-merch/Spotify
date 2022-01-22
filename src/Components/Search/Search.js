@@ -8,7 +8,7 @@ import "./Search.css";
 const SearchComponent = ({ albums, artists, playlists }) => {
   return (
     <div className="search-results">
-      <h2>Top Result</h2>
+      {/* <h2>Top Result</h2> */}
       <TopResult artists={artists} />
       <Recommendations />
       <SearchPlaylists playlists={playlists} artist={artists} />
