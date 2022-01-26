@@ -45,7 +45,7 @@ const HomePageComponent = (props) => {
         })
         .then(({ data }) => setArtists(data.artists.items));
         axios.get(`${SpotifyURL}/me/shows`, {
-          params: { limit: 5, offset: 0 },
+          params: { limit: 4, offset: 0 },
           headers: {
             Authorization: `Bearer ${token}`
           },
