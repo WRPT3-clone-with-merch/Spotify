@@ -14,7 +14,25 @@
   background-color: #463f3ab4;
   cursor: pointer;
 }
-.title {
+.suggested-songs {
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  color: white;
+}
+.top-songs {
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  color: white;
+}
+.suggested-genres{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+  color: white;
+}
+.top-artists{
   display: flex;
   justify-content: center;
   align-items:flex-start;

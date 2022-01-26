@@ -58,23 +58,6 @@ const token = useToken();
     };
 	}}, [info] );
 
-	// useEffect(() => {
-	// 	if(genre.length){
-	// 	let genreSeeds = genre.reduce((acc, curr) => {
-	// 		return acc += `${curr.id},`
-	// 	}, '');
-		
-	// 	try{
-	// 		axios.get(`https://api.spotify.com/v1/recommendations?seed_genres=${genreSeeds}`, {
-	// 			headers: {Authorization: `Bearer ${token}`}
-	// 		})
-	// 		.then(({data}) => setMeta(data.tracks));
-	// 	}
-	// 	catch (err) {
-	// 		console.log(err);
-  //   };
-	// }}, [genre] )
-
 	
 	const recMap = info.map((seed, i) => {
 		return (
@@ -126,6 +109,7 @@ const token = useToken();
 	});
 	
 	const list = meta.map((seed, i) => {
+		if(i < 6){
 		return (
 			<div className='map' >
 				<section key={i}>
@@ -140,25 +124,37 @@ const token = useToken();
 				</section>
 			</div>
 		);
+			}
+			else return null;
 	});
 	
 	console.log(meta)
 	
 	return (
-		<div>
+
 			<div >
-					<h1 className="title">Top Songs</h1>
 				<section className="render">
-					{songMap}
-					
-					{genreMap}
-					{recMap}
-					{list}
+					<div>
+						<h1 className="suggested-songs">Suggested Songs</h1>
+						{list}
+					</div>
+					<div>
+						<h2 className="top-songs">Top Songs</h2>
+						{songMap}
+					</div>
+					<div>
+						<h1 className="suggested-genres">Sugessted Genres</h1>
+						{genreMap}
+					</div>
+					<div>
+						<h1 className="top-artists">Top Artists</h1>
+						{recMap}
+					</div>
 				</section>
 				<SideBar />
 				<TopNavLibrary />
 			</div>
-		</div>
+	
 	);
 };
 

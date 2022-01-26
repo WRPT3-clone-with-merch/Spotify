@@ -6,7 +6,7 @@ import './LikedSongs.css';
 import { useToken } from "../../utils";
 import { Link } from "react-router-dom";
 
-const LikedSongsComponent = (props) => {
+const LikedSongsComponent = () => {
 
   const [userList, setUserList] = useState([]);
 	const token = useToken();
@@ -29,15 +29,15 @@ const LikedSongsComponent = (props) => {
 			<Link to='/track/:id' className='saved-songs'>
         <section key={song.id}>
           <img 
-            src={song.track.album.images[2].url} 
+            src={song.track.album.images[1].url} 
             alt='song'
             className='song-img'
             />
-          <h2 className='title'>{song.track.name}</h2>
+          <h2 className='liked-songs'>{song.track.name}</h2>
         </section>
       </Link>
-		)
-	})
+		);
+	});
 
 	return (
     <div >
@@ -48,6 +48,6 @@ const LikedSongsComponent = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export default LikedSongsComponent;
