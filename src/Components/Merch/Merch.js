@@ -1,46 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import SideBar from '../SideBar/SideBar';
 import TopNavLibrary from "../TopNav/TopNavLibrary";
 import axios from 'axios';
 import './Merch.css';
-import { useToken } from "../../utils";
-import { Link } from "react-router-dom";
 
 const MerchComponent = (props) => {
-  const [userList, setUserList] = useState([]);
-	const token = useToken();
 
-	useEffect(() => {
-    try {
-      axios.get("https://api.spotify.com/v1/me/tracks", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(res => setUserList(res.data.items));
-    } catch (err) {
-      console.log(err);
-    }
-  }, [token]);
-	console.log(userList)
+  const [ merch, setMerch ] = useState([]);
 
-	const savedSongs = userList.map((song) => {
-		return(
-			<Link to={`/tracks/${song.track.id}`} >
-        <section key={song.id}>
-          <img src={song.track.album.images[2].url}/>
-          <h2>{song.track.name}</h2>
-        </section>
-      </Link>
-		)
-	})
+  useEffect(() => {
+    axios.get('/api/merch')
+    .then((res) => {
+      setMerch(res.data)
+    })
+  }, []);
+
+
+
+  const merchMap = merch.map((merch) => {
+    return (
+      <div className="merch-product-container">
+        <img src={merch.imgurl} className='merch-img' />
+        <div className='merch-name-price'>
+        <div className='merch-product-name'>{merch.name}{merch.type}</div>
+        <div className='merch-product-price'>{merch.price}</div>
+        </div>
+      </div>
+    )
+  })
 
 	return (
-    <div className="playlists">
-      <div className="playlist-container">
-        {savedSongs}
+    <div>
         <SideBar />
         <TopNavLibrary />
+      <div className="merch-container">
+      {merchMap}
       </div>
     </div>
   );
