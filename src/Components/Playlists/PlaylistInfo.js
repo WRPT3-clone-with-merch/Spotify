@@ -12,7 +12,6 @@ const PlaylistInfo = (props) => {
   const [header, setHeader] = useState([]);
   const [uriList, setUriList] = useState([]);
   const token = useToken();
-  console.log(header)
 
   useEffect(() => {
     try {

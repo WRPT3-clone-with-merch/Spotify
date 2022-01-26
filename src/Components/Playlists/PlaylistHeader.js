@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useToken, SpotifyURL, useProfile } from "../../utils";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
@@ -9,7 +9,24 @@ const PlaylistHeader = ({ name, description, images, id, uriList }) => {
   const user = useProfile();
   const [following, setFollowing] = useState([]);
   const [toggle, setToggle] = useState(true);
-  // console.log(uriList)
+
+  useEffect(() => {
+    try {
+      axios
+        .get(
+          `${SpotifyURL}/playlists/${id}/followers/contains?ids=${user.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(({ data }) => setFollowing(data));
+    } catch (err) {
+      console.log(err);
+    }
+  }, [token, id, user.id]);
+
   const follow = async () => {
     try {
       await axios.put(
