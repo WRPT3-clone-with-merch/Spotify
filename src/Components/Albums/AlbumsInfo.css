@@ -13,10 +13,16 @@
   justify-content: flex-start;
   border-radius: 25px;
   height: 15vh;
+  align-items: center;
+  background-color: #1b1a1a;
 }
 
-.track-container:hover {
+.track-container-album-info:hover {
   background-color: #463f3a;
+}
+
+.track-number-album-page {
+  padding-left: 5px;
 }
 
 .album-tracks {
@@ -61,7 +67,7 @@
 
 .album-name-info-page {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 200%;
   margin-top: -4%;
 }
 
@@ -83,7 +89,7 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #a5a58d;
-  margin-top: 30vh;
+  margin-top: 20vh;
 }
 
 .hash {
