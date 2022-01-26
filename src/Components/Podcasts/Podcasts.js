@@ -30,7 +30,7 @@ const PodcastsComponent = (props) => {
 
   const showsMap = shows.map((shows) => {
     return (
-      <Link className="link" to={`/playlist/${shows.show.id}`} >
+      <Link className="link" to={`/podcast/${shows.show.id}`} >
         <div className="shows-preview" key={shows.show.id}>
           <img className='shows-image' src={shows.show.images[0].url} alt='shows' />
           <h3>{shows.show.name}</h3>

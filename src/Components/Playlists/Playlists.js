@@ -34,7 +34,7 @@ const Playlists = (props) => {
           <div>
             <img className="playlist-image" src={images[0].url} alt="playlist" />
             <h3 className='playlist-name'>{name}</h3>
-            <p className="playlist-description">{description}</p>
+            <p className="playlist-description" dangerouslySetInnerHTML={{ __html: description }} />
           </div>
         </Link>
       )
