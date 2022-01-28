@@ -3,6 +3,7 @@ import SideBar from "../SideBar/SideBar";
 import TopResult from "./TopResult";
 import SearchPlaylists from "./SearchPlaylists";
 import SearchAlbums from "./SearchAlbums";
+import Recommendations from "../Recommendations/Recommendations";
 import "./Search.css";
 
 const SearchComponent = ({ albums, artists, playlists }) => {
@@ -17,6 +18,7 @@ const SearchComponent = ({ albums, artists, playlists }) => {
         </div>
       ) : null}
       <SideBar />
+      {/* <Recommendations /> */}
     </div>
   );
 };

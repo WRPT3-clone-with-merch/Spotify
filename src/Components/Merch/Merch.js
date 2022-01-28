@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import SideBar from '../SideBar/SideBar';
-import TopNavLibrary from "../TopNav/TopNavLibrary";
+import TopNavLibrary from '../TopNav/TopNavLibrary';
 import axios from 'axios';
 import './Merch.css';
 
@@ -37,7 +37,7 @@ const MerchComponent = (props) => {
       {merchMap}
       </div>
     </div>
-  );
+  )
 }
 
 export default MerchComponent;
