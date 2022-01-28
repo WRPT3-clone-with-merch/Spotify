@@ -1,3 +1,7 @@
+.artist-library-page {
+  margin-top: 10vh;
+}
+
 .artist-container {
   color: white;
   display: flex;
@@ -65,7 +69,6 @@
 
 .artist {
   color: #a5a58d;
-
 }
 
 #artist-link {

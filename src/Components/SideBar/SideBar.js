@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useToken, SpotifyURL, useProfile } from "../../utils";
 import SideBarPlaylist from "./SideBarPlaylist";
 import Logo from "../../images/Spotify_Logo_RGB_White.png";
@@ -9,6 +9,7 @@ import "./SideBar.css";
 const SideBarComponent = () => {
   const token = useToken();
   const user = useProfile();
+  const history = useHistory();
 
   const createPlaylist = () => {
     try {
@@ -23,6 +24,7 @@ const SideBarComponent = () => {
           },
         }
       );
+      history.go(0);
     } catch (err) {
       console.log(err);
     }
