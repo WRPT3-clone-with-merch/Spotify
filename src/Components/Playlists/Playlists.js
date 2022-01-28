@@ -44,7 +44,7 @@ const Playlists = () => {
 
   return (
     <div className="playlists">
-      <div className="category">
+      <div className="category-playlists">
         <p>Playlists</p>
       </div>
       <div className="playlist-container">

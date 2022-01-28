@@ -1,6 +1,6 @@
 .playlists {
   height: 100vh;
-  margin-top: 22vh;
+  margin-top: 33vh;
 }
 
 .playlist-container {
@@ -28,9 +28,12 @@
   text-decoration: none;
 }
 
-.category {
+.category-playlists {
   color: white;
   display: flex;
+  margin-left: 22vw;
+  font-size: larger;
+  font-weight: bold;
 }
 
 .playlist-preview:hover {
