@@ -19,6 +19,7 @@
 
 .track-container-album-info:hover {
   background-color: #463f3a;
+  cursor: pointer;
 }
 
 .track-number-album-page {

@@ -24,13 +24,15 @@ const LikedSongsComponent = () => {
     }
   }, [token]);
 
+
+
   const savedSongs = userList.map((song) => {
     const { album, name } = song.track;
     return (
-      <Link to={`/album/${album.id}`} className="saved-songs">
-        <section key={song.id}>
-          <img src={album.images[2].url} alt="song" className="song-img" />
-          <h2 className="title">{name}</h2>
+      <Link className='liked-link' to={`/album/${album.id}`}>
+        <section className="saved-songs" key={song.id}>
+          <img src={album.images[0].url} alt="song" className="liked-song-img" />
+          <h2 className="liked-song-title">{name}</h2>
         </section>
       </Link>
     );

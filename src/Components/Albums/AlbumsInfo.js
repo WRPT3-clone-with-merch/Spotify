@@ -9,7 +9,6 @@ const AlbumsInfo = (props) => {
   const [albumInfo, setAlbumInfo] = useState([]);
   const [trackInfo, setTrackInfo] = useState([]);
   const [uriList, setUriList] = useState([]);
-  const [header, setHeader] = useState([]);
   const token = useToken();
 
   useEffect(() => {
