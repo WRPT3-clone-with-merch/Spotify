@@ -23,7 +23,7 @@
   margin: 1% 0 0 1%;
 }
 
-.home-page-playlist-preview{
+.home-page-playlist-preview {
   height: 80px;
   width: 300px;
   display: flex;
@@ -123,4 +123,21 @@
 
 .category-home-page {
   color: white;
+}
+
+.home-page-recent {
+  color: white;
+  margin-top: 32vh;
+  height: 65vh;
+}
+
+.recent-album-image {
+  height: 170px;
+}
+
+.recent-track-name {
+  width: 9vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

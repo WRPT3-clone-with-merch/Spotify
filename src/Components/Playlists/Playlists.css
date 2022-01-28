@@ -1,3 +1,8 @@
+.playlists {
+  height: 100vh;
+  margin-top: 22vh;
+}
+
 .playlist-container {
   color: white;
   display: flex;
@@ -49,6 +54,6 @@
   text-decoration: none;
 }
 
-.playlist-name{
+.playlist-name {
   text-decoration: none;
 }

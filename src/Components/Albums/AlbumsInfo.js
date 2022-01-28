@@ -65,17 +65,23 @@ const AlbumsInfo = (props) => {
 
   const infoMap = trackInfo.map((trackInfo, index) => {
     const duration = new Date(trackInfo.duration_ms);
-    const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
+    const seconds = `${
+      duration.getSeconds() < 10 ? "0" : ""
+    }${duration.getSeconds()}`;
 
     return (
-      <div key={index} onClick={() => play(index)} className="track-container-album-info">
-        <p className='track-number-album-page'>{index + 1}</p>
+      <div
+        key={index}
+        onClick={() => play(index)}
+        className="track-container-album-info"
+      >
+        <p className="track-number-album-page">{index + 1}</p>
         <div className="track-info">
           <div className="album-tracks">
             <p className="track-title">{trackInfo.name}</p>
-            <p className='artist-name'>{trackInfo.artists[0].name}</p>
+            <p className="artist-name">{trackInfo.artists[0].name}</p>
           </div>
-            <p className='duration'>{`${duration.getMinutes()}:${seconds}`}</p>
+          <p className="duration">{`${duration.getMinutes()}:${seconds}`}</p>
         </div>
       </div>
     );
@@ -93,32 +99,30 @@ const AlbumsInfo = (props) => {
           <div className="album-main">
             <p className="category-album">Album</p>
             <p className="album-name-info-page">{albumInfo[0].name}</p>
-            <p className='artist-name-header'>{albumInfo[0].artists[0].name}</p>
+            <p className="artist-name-header">{albumInfo[0].artists[0].name}</p>
           </div>
         </div>
       </div>
     );
   };
 
-
-
   return (
     <div>
       <TopNavLibrary />
-      <div  className="album-tracks-container">
-      <div className="header"></div>
-      <div>
-        <div>{albumInfo.length && album()}</div>
-        <SideBar />
-        <div className="bar-above-tracks">
-          <p className="hash">#</p>
-          <p className="title">TITLE</p>
-          <p className="duration">Duration</p>
+      <div className="album-tracks-container">
+        <div className="header"></div>
+        <div>
+          <div>{albumInfo.length && album()}</div>
+          <SideBar />
+          <div className="bar-above-tracks">
+            <p className="hash">#</p>
+            <p className="title">TITLE</p>
+            <p className="duration">Duration</p>
+          </div>
+          <div>{infoMap}</div>
         </div>
-        <div>{infoMap}</div>
       </div>
     </div>
-      </div>
   );
 };
 

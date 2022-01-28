@@ -1,53 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import SideBar from '../SideBar/SideBar';
+import React, { useState, useEffect } from "react";
+import SideBar from "../SideBar/SideBar";
 import TopNavLibrary from "../TopNav/TopNavLibrary";
-import axios from 'axios';
-import './LikedSongs.css';
+import axios from "axios";
 import { useToken } from "../../utils";
 import { Link } from "react-router-dom";
+import "./LikedSongs.css";
 
-const LikedSongsComponent = (props) => {
-
+const LikedSongsComponent = () => {
+  const token = useToken();
   const [userList, setUserList] = useState([]);
-	const token = useToken();
 
-	useEffect(() => {
+  useEffect(() => {
     try {
-      axios.get("https://api.spotify.com/v1/me/tracks", {
+      axios
+        .get("https://api.spotify.com/v1/me/tracks", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
-        .then(res => setUserList(res.data.items));
+        .then((res) => setUserList(res.data.items));
     } catch (err) {
       console.log(err);
     }
   }, [token]);
 
-	const savedSongs = userList.map((song) => {
-		return(
-			<Link to='/track/:id' className='saved-songs'>
+  const savedSongs = userList.map((song) => {
+    const { album, name } = song.track;
+    return (
+      <Link to={`/album/${album.id}`} className="saved-songs">
         <section key={song.id}>
-          <img 
-            src={song.track.album.images[2].url} 
-            alt='song'
-            className='song-img'
-            />
-          <h2 className='title'>{song.track.name}</h2>
+          <img src={album.images[2].url} alt="song" className="song-img" />
+          <h2 className="title">{name}</h2>
         </section>
       </Link>
-		)
-	})
+    );
+  });
 
-	return (
-    <div >
-      <div className='main'>
+  return (
+    <div>
+      <div className="main">
         {savedSongs}
         <SideBar />
         <TopNavLibrary />
       </div>
     </div>
   );
-}
+};
 
 export default LikedSongsComponent;

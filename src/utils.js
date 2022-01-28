@@ -11,8 +11,7 @@ export const useToken = () => {
       try {
         const response = await axios.get("/auth/token");
         setToken(response.data.access_token);
-      }
-      catch {
+      } catch {
         return;
       }
     }
@@ -28,13 +27,15 @@ export const useProfile = () => {
   const token = useToken();
 
   useEffect(() => {
-    function getUser () {
+    function getUser() {
       try {
-        axios.get(`${SpotifyURL}/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }).then(({ data }) => setUserInfo(data))
+        axios
+          .get(`${SpotifyURL}/me`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(({ data }) => setUserInfo(data));
       } catch (err) {
         console.log(err);
       }
@@ -45,4 +46,3 @@ export const useProfile = () => {
 
   return userInfo;
 };
-
