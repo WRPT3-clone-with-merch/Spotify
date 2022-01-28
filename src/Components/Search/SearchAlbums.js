@@ -18,7 +18,7 @@ const SearchAlbums = ({ albums }) => {
               src={album.images[0].url}
               alt="album"
             />
-            <h3>{album.name}</h3>
+            <h3 className="search-album-name">{album.name}</h3>
           </div>
         </Link>
       );

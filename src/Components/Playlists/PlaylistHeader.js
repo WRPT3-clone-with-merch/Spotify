@@ -57,7 +57,7 @@ const PlaylistHeader = ({ name, description, images, id, uriList }) => {
 
   const unfollow = async () => {
     try {
-      axios.delete(`${SpotifyURL}/playlists/${id}/followers`, {
+      await axios.delete(`${SpotifyURL}/playlists/${id}/followers`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -135,7 +135,10 @@ const PlaylistHeader = ({ name, description, images, id, uriList }) => {
       <div className="header-info">
         <p>Playlist</p>
         <h1 className="header-name">{name}</h1>
-        <p className="header-description" dangerouslySetInnerHTML={{ __html: description }} />
+        <p
+          className="header-description"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
       </div>
       <div className="playlist-functions">
         {toggle ? (

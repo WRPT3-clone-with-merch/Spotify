@@ -14,3 +14,10 @@
   display: flex;
   margin-left: -1vw;
 }
+
+.search-album-name {
+  width: 9vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

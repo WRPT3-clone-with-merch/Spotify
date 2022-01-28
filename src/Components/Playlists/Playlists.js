@@ -28,20 +28,23 @@ const Playlists = () => {
   const playlistMap = list.map((list) => {
     const { id, name, description, images } = list;
 
-      return (
-        <Link to={`/playlist/${id}`}  key={id} className="playlist-preview">
-          <div>
-            <img className="playlist-image" src={images[0]?.url} alt="playlist" />
-            <h3 className='playlist-name'>{name}</h3>
-            <p className="playlist-description" dangerouslySetInnerHTML={{ __html: description }} />
-          </div>
-        </Link>
-      )
+    return (
+      <Link to={`/playlist/${id}`} key={id} className="playlist-preview">
+        <div>
+          <img className="playlist-image" src={images[0]?.url} alt="playlist" />
+          <h3 className="playlist-name">{name}</h3>
+          <p
+            className="playlist-description"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
+        </div>
+      </Link>
+    );
   });
 
   return (
     <div className="playlists">
-      <div className='category'>
+      <div className="category">
         <p>Playlists</p>
       </div>
       <div className="playlist-container">
