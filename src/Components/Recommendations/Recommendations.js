@@ -110,10 +110,11 @@ const Recommendations = () => {
 	// });
 
 	const list = meta.map((seed, i) => {
-		if (i < 6) {
+		
 			return (
 				<section key={i}
 					className="map">
+						<div className="sugggested-songs-info">
 					<h2 className="text">
 						{seed.name}
 					</h2>
@@ -122,19 +123,19 @@ const Recommendations = () => {
 						className="img"
 						alt="image"
 					/>
+					</div>
 				</section>
 			);
-		}
-		else return null;
+		
 	});
 
 
 	return (
 		<div className="render">
-			<div>
-			<h1 className="render-text">Suggested Songs</h1>
-			</div>
+		
 				<div className="render-maps">
+			<h1 className="render-text">Suggested Songs</h1>
+			
 					{list}
 				</div>
 			{/* <h1 className="render-text">Top Artists</h1>

@@ -1,5 +1,4 @@
 .map{
-  background-color: #1b1a1a;
   height: 350px;
   width: 250px;
   display: flex;
@@ -9,10 +8,6 @@
   justify-content: center;
   border-radius: 2%;
   margin-bottom: 20px;
-}
-.map:hover {
-  background-color: #463f3ab4;
-  cursor: pointer;
 }
 .render {
   margin-top: 35vh;
@@ -45,9 +40,29 @@
   font-size: 30px;
 }
 .render-maps {
+  color: #a5a58d;
   display: flex;
   flex-direction: row;
+  width: 80vw;
+ 
   flex-wrap: wrap;
-  height: auto;
-  margin: 1% 0 0 1%;
+  /* padding-top: 30%; */
+  height: 60vh;
+  justify-content: space-between;
+}
+.sugggested-songs-info {
+  background-color: #1b1a1a;
+  height: 350px;
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2%;
+  margin-bottom: 20px;
+}
+.sugggested-songs-info:hover {
+  background-color: #463f3ab4;
+  cursor: pointer;
 }
