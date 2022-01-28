@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const massive = require("massive");
 const session = require("express-session");
+const productCtrl = require('./controllers/products');
 
 const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING } = process.env;
 const request = require("request");
@@ -124,6 +125,8 @@ app.get('/auth/token', (req, res) => {
       })
   } else { res.sendStatus(403) }
 });
+
+app.get('/api/merch', productCtrl.getProducts);
 
 
 app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`));

@@ -1,9 +1,10 @@
-/* .search-results {
-  color: white;
-  position: absolute;
-  top: 7%;
-  left: 22%;
-} */
+.search-results {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 1% 0 0 1%;
+}
 
 .featuring-text {
   margin-top: 5vh;

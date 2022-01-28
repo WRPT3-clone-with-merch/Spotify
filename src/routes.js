@@ -4,7 +4,6 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import HomePage from './Components/HomePage/HomePage';
 import Merch from './Components/Merch/Merch';
 import LikedSongs from './Components/LikedSongs/LikedSongs';
-import CreatePlaylist from './Components/CreatePlaylist/CreatePlaylist';
 import Artists from './Components/Artists/Artists';
 import Albums from './Components/Albums/Albums';
 import Playlists from './Components/Playlists/Playlists';
@@ -18,6 +17,7 @@ import TopNavSearchComponent from './Components/TopNav/TopNavSearch';
 import Recommendations from './Components/Recommendations/Recommendations';
 import ArtistPage from './Components/Artists/ArtistPage';
 import AlbumsInfo from './Components/Albums/AlbumsInfo';
+import PodcastInfo from './Components/Podcasts/PodcastInfo';
 
 export default (
   <BrowserRouter>
@@ -26,7 +26,6 @@ export default (
     <Route path='/merch' component={Merch} />
     <Route path='/search' component={TopNavSearchComponent} />
     <Route path='/liked-songs' component={LikedSongs} />
-    <Route path='/create-playlist' component={CreatePlaylist} />
     <Route path='/artists' component={Artists} />
     <Route path='/artist/:id' component={ArtistPage} />
     <Route path='/albums' component={Albums} />
@@ -34,6 +33,7 @@ export default (
     <Route path='/playlists' component={Playlists} />
     <Route path='/playlist/:id' component={PlaylistInfo} />
     <Route path='/podcasts' component={Podcasts} />
+    <Route path='/podcast/:id' component={PodcastInfo} />
     <Route path='/tracks' component={Tracks}/>
     <Route path='/delete-track/:ids' component={DeleteTracks}/>
     <Route path='/tracks/:id' component={Track}/>

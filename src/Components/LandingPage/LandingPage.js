@@ -20,7 +20,10 @@ const LandingPageComponent = (props) => {
     "user-modify-playback-state",
     "user-read-currently-playing",
     "user-read-recently-played",
+    "playlist-modify-private",
+    "playlist-modify-public",
     "playlist-read-private",
+    "playlist-read-collaborative",
     "user-top-read",
   ];
 

@@ -33,19 +33,22 @@ const LikedSongsComponent = () => {
             alt='song'
             className='song-img'
             />
-          <h2 className='liked-songs'>{song.track.name}</h2>
+          <h1 className='liked-songs'>{song.track.name}</h1>
         </section>
       </Link>
 		);
 	});
 
 	return (
+    <div>
     <div >
+      <p className='liked-songs-text'>Liked Songs</p>
       <div className='main'>
         {savedSongs}
+      </div>
         <SideBar />
         <TopNavLibrary />
-      </div>
+    </div>
     </div>
   );
 };

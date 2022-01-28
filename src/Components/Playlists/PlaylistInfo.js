@@ -12,6 +12,7 @@ const PlaylistInfo = (props) => {
   const [header, setHeader] = useState([]);
   const [uriList, setUriList] = useState([]);
   const token = useToken();
+  console.log(header)
 
   useEffect(() => {
     try {
@@ -41,9 +42,9 @@ const PlaylistInfo = (props) => {
     }
   }, [token, props.match.params.id]);
 
-  const headerMap = header.map(({ name, description, images }) => {
+  const headerMap = header.map(({ name, description, images, id}) => {
     return (
-      <PlaylistHeader name={name} description={description} images={images} />
+      <PlaylistHeader name={name} description={description} images={images} id={id} uriList={uriList}/>
     );
   });
 
@@ -78,26 +79,28 @@ const PlaylistInfo = (props) => {
     const duration = new Date(playlist.track.duration_ms);
     const dateAdded = new Date(playlist.added_at);
     const seconds = `${(duration.getSeconds() < 10 ? '0' : '')}${duration.getSeconds()}`;
-    const { id, name } = playlist.track.artists[0];
+    const { album, name, artists } = playlist.track;
 
     return (
       <div key={index} className="track-container">
         <p>{index + 1}</p>
         <div className="track-image-main">
-          <img
-            src={playlist.track.album.images[2].url}
-            className="list-album-cover"
-            alt="album cover"
-            onClick={() => play(index)}
-          />
+          {album.images ? (
+            <img
+              src={album.images[2].url}
+              className="list-album-cover"
+              alt="album cover"
+              onClick={() => play(index)}
+            />
+          ) : null}
           <div className="track-main">
-            <p>{playlist.track.name}</p>
-            <Link to={`/artist/${id}`} className="playlist-artist-name">
-              <p>{name}</p>
+            <p>{name}</p>
+            <Link to={`/artist/${artists[0].id}`} className="playlist-artist-name">
+              <p>{artists[0].name}</p>
             </Link>
           </div>
         </div>
-        <p className="list-album-name">{playlist.track.album.name}</p>
+        <p className="list-album-name">{album.name}</p>
         <p>{`${dateAdded.getDay()} days ago`}</p>
         <p className="list-album-duration">{`${duration.getMinutes()} : ${seconds}`}</p>
       </div>

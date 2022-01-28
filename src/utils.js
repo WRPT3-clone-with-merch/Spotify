@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+
+export const SpotifyURL = "https://api.spotify.com/v1";
 
 export const useToken = () => {
   const [token, setToken] = useState("");
@@ -21,5 +23,26 @@ export const useToken = () => {
   return token;
 };
 
+export const useProfile = () => {
+  const [userInfo, setUserInfo] = useState([]);
+  const token = useToken();
 
-export const SpotifyURL = "https://api.spotify.com/v1";
+  useEffect(() => {
+    function getUser () {
+      try {
+        axios.get(`${SpotifyURL}/me`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then(({ data }) => setUserInfo(data))
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    getUser();
+  }, [token]);
+
+  return userInfo;
+};
+

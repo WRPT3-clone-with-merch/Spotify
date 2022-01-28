@@ -1,6 +1,6 @@
 
 .saved-songs {
-  background-color: #211e1a80;
+  background-color: #2c2c2c80;
   height: 350px;
   width: 250px;
   display: flex;
@@ -13,20 +13,22 @@
 }
 
 .main {
-	color: white;
-  position: absolute;
-  top: 7%;
-  left: 20%;
+	color: #a5a58d;
   display: flex;
+  flex-direction: row;
+  width: 80vw;
+  margin-left: 20vw;
   flex-wrap: wrap;
-  background-color: #252422;
-	text-overflow: clip;
+  /* padding-top: 30%; */
+  height: 60vh;
+  justify-content: space-between;
 }
 .liked-songs{
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
+  font-size: large;
 }
 
 .song-img{
@@ -34,4 +36,10 @@
   width: 200px;
   box-shadow: 5px 5px 8px black;
   border-radius: 2%;
+}
+.liked-songs-text {
+  color: white;
+  margin-left: 22vw;
+  font-size: larger;
+  font-weight: bold;
 }

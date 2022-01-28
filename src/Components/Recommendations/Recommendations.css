@@ -1,9 +1,9 @@
 .map{
-  background-color: #211e1a80;
+  background-color: #1b1a1a;
   height: 350px;
   width: 250px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -14,39 +14,13 @@
   background-color: #463f3ab4;
   cursor: pointer;
 }
-.suggested-songs {
-  display: flex;
-  justify-content: center;
-  align-items:flex-start;
-  color: white;
-}
-.top-songs {
-  display: flex;
-  justify-content: center;
-  align-items:flex-start;
-  color: white;
-}
-.suggested-genres{
-  display: flex;
-  justify-content: center;
-  align-items:flex-start;
-  color: white;
-}
-.top-artists{
-  display: flex;
-  justify-content: center;
-  align-items:flex-start;
-  color: white;
-}
 .render {
-  color: #a5a58d;
+  margin-top: 35vh;
+  margin-left: 22vw;
+  width: 80vw;
+  height: 100vh;
   display: flex;
   flex-direction: row;
-  width: 80vw;
-  margin-left: 20vw;
-  flex-wrap: wrap;
-  height: 60vh;
-  justify-content: space-between;
 }
 .img {
   height: 200px;
@@ -64,4 +38,16 @@
   cursor: pointer;
   color: white;
   text-decoration: underline;
+}
+.render-text {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+}
+.render-maps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 1% 0 0 1%;
 }
