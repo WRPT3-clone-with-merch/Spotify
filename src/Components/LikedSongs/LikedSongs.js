@@ -7,11 +7,7 @@ import { Link } from "react-router-dom";
 import "./LikedSongs.css";
 
 const LikedSongsComponent = () => {
-<<<<<<< HEAD
-
-=======
   const token = useToken();
->>>>>>> main
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -33,7 +29,6 @@ const LikedSongsComponent = () => {
     return (
       <Link to={`/album/${album.id}`} className="saved-songs">
         <section key={song.id}>
-<<<<<<< HEAD
           <img 
             src={song.track.album.images[1].url} 
             alt='song'
@@ -50,22 +45,11 @@ const LikedSongsComponent = () => {
     <div >
       <p className='liked-songs-text'>Liked Songs</p>
       <div className='main'>
-=======
-          <img src={album.images[2].url} alt="song" className="song-img" />
-          <h2 className="title">{name}</h2>
-        </section>
-      </Link>
-    );
-  });
-
-  return (
-    <div>
-      <div className="main">
->>>>>>> main
         {savedSongs}
       </div>
         <SideBar />
         <TopNavLibrary />
+        
     </div>
     </div>
   );
