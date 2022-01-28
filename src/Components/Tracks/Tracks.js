@@ -3,6 +3,7 @@ import axios from "axios";
 import { useToken } from "../../utils";
 import SideBar from "../SideBar/SideBar";
 import TopNavLibrary from "../TopNav/TopNavLibrary";
+import { Link } from "react-router-dom";
 
 const Tracks = (props) => {
 	const [tracks, setTracks] = useState([]);
@@ -20,13 +21,14 @@ const Tracks = (props) => {
     };
 }, [token]);
 
-let myTracks = tracks.map(track => {
+let myTracks = tracks.map(song => {
 	return (
-		<div key={track.id} className="view">
-			<img src={track.images[0].url}/>
-			<h3>{tracks.title}</h3>
-			<p>{tracks.description}</p>
-		</div>
+		<Link to={`/track/${song.id}`} >
+        <section key={song.id}>
+          <img src={song.track.album.images[2].url}/>
+          <h2>{song.track.name}</h2>
+        </section>
+    </Link>
 	);
 });
 console.log(myTracks)
