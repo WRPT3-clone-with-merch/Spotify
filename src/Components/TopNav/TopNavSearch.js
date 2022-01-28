@@ -59,7 +59,8 @@ const TopNavSearchComponent = () => {
             placeholder="Artists, Songs, or Podcasts"
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <BsSearch onClick={handleSearch} className="search-icon" />
+          <BsSearch onClick={handleSearch} 
+          className="search-icon" />
         </div>
         <div className="user-name">
           <button className="user-btn">{user.display_name}</button>
