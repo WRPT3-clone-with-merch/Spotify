@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
-import { useToken, SpotifyURL } from "../../utils";
+import { useToken, SpotifyURL, useProfile } from "../../utils";
 import SearchComponent from "../Search/Search";
 import "./TopNav.css";
 
-const TopNavSearchComponent = (props) => {
+const TopNavSearchComponent = () => {
   const token = useToken();
-  const [user, setUser] = useState([]);
+  const user = useProfile();
   const [searchPlaylists, setSearchPlaylists] = useState([]);
   const [searchAlbum, setSearchAlbum] = useState([]);
   const [searchArtist, setSearchArtist] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-
-  useEffect(() => {
-    try {
-      axios
-        .get(`${SpotifyURL}/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => setUser(data));
-    } catch (err) {
-      console.log(err);
-    }
-  }, [token]);
 
   const handleSearch = async () => {
     try {
@@ -73,7 +59,8 @@ const TopNavSearchComponent = (props) => {
             placeholder="Artists, Songs, or Podcasts"
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <BsSearch onClick={handleSearch} className="search-icon" />
+          <BsSearch onClick={handleSearch} 
+          className="search-icon" />
         </div>
         <div className="user-name">
           <button className="user-btn">{user.display_name}</button>

@@ -4,10 +4,15 @@ import "../Playlists/Playlists.css";
 import "./Search.css";
 
 const SearchPlaylists = ({ playlists, artist }) => {
+  console.log(artist);
   const playlistMap = playlists.map((list, index) => {
-    if(index < 4){
+    if (index < 4) {
       return (
-        <Link to={`/playlist/${list.id}`} key={list.id} className="playlist-preview" >
+        <Link
+          to={`/playlist/${list.id}`}
+          key={list.id}
+          className="playlist-preview"
+        >
           <div>
             <img
               className="playlist-image"
@@ -17,22 +22,38 @@ const SearchPlaylists = ({ playlists, artist }) => {
             <h3>{list.name}</h3>
           </div>
         </Link>
-      )
+      );
     } else return null;
   });
 
   const artistName = artist.map((artist, index) => {
-    if(index === 0){
-      return <h2 className="featuring-text">Featuring {artist.name}</h2>
+    if (index === 0) {
+      return <h2 className="featuring-text">Featuring {artist.name}</h2>;
     } else return null;
-  })
+  });
+
+  const artistMap = artist.map((artist, index) => {
+    const { id, images, name } = artist;
+    if (index < 4 && images.length) {
+      return (
+        <Link to={`/artist/${id}`} key={id} className="playlist-preview">
+          <div>
+            <img className="artist-image" src={images[0].url} alt="artist" />
+            <h3>{name}</h3>
+          </div>
+        </Link>
+      );
+    }
+  });
 
   return (
     <div>
       {artistName}
-      <div className="featuring-playlists">{playlistMap}</div>
+      <div className="featuring-section">{playlistMap}</div>
+      <h2>Artists</h2>
+      <div className="featuring-section">{artistMap}</div>
     </div>
-  )
+  );
 };
 
 export default SearchPlaylists;

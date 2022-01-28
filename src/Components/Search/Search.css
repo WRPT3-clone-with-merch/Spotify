@@ -1,16 +1,23 @@
 .search-results {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: auto;
-  margin: 1% 0 0 1%;
+  color: white;
+  position: absolute;
+  top: 7%;
+  left: 22%;
+  height: 150vh;
 }
 
 .featuring-text {
   margin-top: 5vh;
 }
 
-.featuring-playlists {
+.featuring-section {
   display: flex;
   margin-left: -1vw;
+}
+
+.search-album-name {
+  width: 9vw;
+  white-space: pre;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

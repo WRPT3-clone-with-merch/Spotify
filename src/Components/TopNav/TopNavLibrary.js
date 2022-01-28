@@ -1,28 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import "./TopNav.css";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useToken } from "../../utils";
+import { useToken, useProfile } from "../../utils";
 
 const TopNavLibraryComponent = (props) => {
-  const [user, setUser] = useState([]);
+  const user = useProfile();
   const token = useToken();
-
-  useEffect(() => {
-    try {
-      axios
-        .get("https://api.spotify.com/v1/me/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(({ data }) => setUser(data));
-    } catch (err) {
-      console.log(err);
-    }
-  }, [token]);
 
   return (
     <div className="top-nav">

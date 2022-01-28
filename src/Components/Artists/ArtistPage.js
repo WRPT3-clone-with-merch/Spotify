@@ -12,21 +12,22 @@ import "./ArtistPage.css";
 const ArtistPage = (props) => {
   const token = useToken();
   const [artist, setArtist] = useState([]);
+  const { id } = props.match.params;
 
   useEffect(() => {
     try {
       axios
-      .get(`${SpotifyURL}/artists/${props.match.params.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(({ data }) => setArtist([data]));
+        .get(`${SpotifyURL}/artists/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(({ data }) => setArtist([data]));
       window.scrollTo(0, 0);
     } catch (err) {
       console.log(err);
     }
-  }, [token, props.match.params.id]);
+  }, [token, id]);
 
   const headerMap = artist.map(({ name, images }) => {
     return <ArtistHeader name={name} images={images} />;
@@ -35,9 +36,9 @@ const ArtistPage = (props) => {
   return (
     <div className="artist-page">
       {headerMap}
-      <ArtistTopTracks id={props.match.params.id} />
-      <ArtistAlbums id={props.match.params.id} />
-      <RelatedArtists id={props.match.params.id} />
+      <ArtistTopTracks id={id} />
+      <ArtistAlbums id={id} />
+      <RelatedArtists id={id} />
       <TopNav />
       <SideBar />
     </div>

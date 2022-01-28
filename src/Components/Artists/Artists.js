@@ -6,10 +6,10 @@ import axios from "axios";
 import { useToken, SpotifyURL } from "../../utils";
 import "./Artists.css";
 
-const ArtistsComponent = (props) => {
+const ArtistsComponent = () => {
   const [list, setList] = useState([]);
   const token = useToken();
-  
+
   useEffect(() => {
     try {
       axios
@@ -26,12 +26,13 @@ const ArtistsComponent = (props) => {
   }, [token]);
 
   const artistsMap = list.map((list) => {
+    const { id, images, name } = list;
     return (
-      <Link to={`/artist/${list.id}`} id="artist-link">
-        <div  key={list.id}  className="following-artists">
-          <img className="artist-image" src={list.images[2].url} alt="artist"/>
+      <Link to={`/artist/${id}`} id="artist-link">
+        <div key={id} className="following-artists">
+          <img className="artist-image" src={images[2].url} alt="artist" />
           <div className="artist-info">
-            <h3 className="artist-preview-name">{list.name}</h3>
+            <h3 className="artist-preview-name">{name}</h3>
             <p className="artist">Artist</p>
           </div>
         </div>
@@ -40,7 +41,7 @@ const ArtistsComponent = (props) => {
   });
 
   return (
-    <div>
+    <div className="artist-library-page">
       <div>
         <p className="artist-category">Artists</p>
         <div className="artist-container">{artistsMap}</div>
