@@ -81,7 +81,7 @@ const PlaylistInfo = (props) => {
     const { album, name, artists } = playlist.track;
 
     return (
-      <div key={index} className="track-container">
+      <div onClick={() => play(index)}  key={index} className="track-container">
         <p>{index + 1}</p>
         <div className="track-image-main">
           {album.images ? (
@@ -89,7 +89,6 @@ const PlaylistInfo = (props) => {
               src={album.images[2].url}
               className="list-album-cover"
               alt="album cover"
-              onClick={() => play(index)}
             />
           ) : null}
           <div className="track-main">

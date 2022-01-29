@@ -12,7 +12,7 @@
   flex-direction: row;
   justify-content: flex-start;
   border-radius: 25px;
-  height: 15vh;
+  height: 100px;
   align-items: center;
   background-color: #1b1a1a;
 }
@@ -51,6 +51,7 @@
   width: 250px;
   height: 250px;
   box-shadow: 5px 5px 8px black;
+  border-radius: 5px;
 }
 
 .album-image-info-page:hover {
@@ -102,7 +103,7 @@
 }
 
 .track-title {
-  margin-left: 2vw;
+  margin-left: 3vw;
   font-weight: bold;
 }
 

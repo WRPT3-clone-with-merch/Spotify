@@ -144,7 +144,7 @@ const ArtistTopTracks = ({ id }) => {
     
     if (index < 5) {
       return (
-        <div className="top-track">
+        <div onClick={() => play(index)} className="top-track">
           <div className="top-track-1">
             <p className="top-track-index" onClick={() => play(index)}>{index + 1}</p>
             <Link to={`/album/${album.id}`} className="link" key={index}>
