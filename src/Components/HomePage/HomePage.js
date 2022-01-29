@@ -35,14 +35,15 @@ const HomePageComponent = (props) => {
         })
         .then(({ data }) => setPlaylist(data.items));
       axios
-        .get("https://api.spotify.com/v1/me/following?type=artist", {
+        .get(`${SpotifyURL}/me/following?type=artist`, {
           params: { limit: 3, offset: 0 },
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then(({ data }) => setArtists(data.artists.items));
-        axios.get(`${SpotifyURL}/me/shows`, {
+      axios
+        .get(`${SpotifyURL}/me/shows`, {
           params: { limit: 4, offset: 0 },
           headers: {
             Authorization: `Bearer ${token}`,

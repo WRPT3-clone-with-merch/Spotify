@@ -16,9 +16,10 @@ const SearchComponent = ({ albums, artists, playlists }) => {
           <SearchPlaylists playlists={playlists} artist={artists} />
           <SearchAlbums albums={albums} />
         </div>
-      ) : null}
+      ) : (
+        <Recommendations />
+      )}
       <SideBar />
-      {/* <Recommendations /> */}
     </div>
   );
 };
