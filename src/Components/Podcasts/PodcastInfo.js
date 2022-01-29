@@ -65,10 +65,6 @@ const PodcastInfo = (props) => {
     }
   };
 
-  console.log(podcastInfo);
-  console.log(shows);
-  console.log(uriList);
-
   const infoMap = podcastInfo.map((podcastInfo, index) => {
     const duration = new Date(podcastInfo.duration_ms);
     const dateAdded= new Date(podcastInfo.release_date_precision);

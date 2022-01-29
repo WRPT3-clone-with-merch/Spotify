@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SideBar from "../SideBar/SideBar";
 import TopNavLibrary from "../TopNav/TopNavLibrary";
 import axios from "axios";
-import { useToken } from "../../utils";
+import { useToken, SpotifyURL } from "../../utils";
 import { Link } from "react-router-dom";
 import "./LikedSongs.css";
 
@@ -13,7 +13,7 @@ const LikedSongsComponent = () => {
   useEffect(() => {
     try {
       axios
-        .get("https://api.spotify.com/v1/me/tracks", {
+        .get(`${SpotifyURL}/me/tracks`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -40,20 +40,17 @@ const LikedSongsComponent = () => {
           <h1 className='liked-songs'>{song.track.name}</h1>
         </section>
       </Link>
-		);
-	});
+    );
+  });
 
-	return (
+  return (
     <div>
-    <div >
-      <p className='liked-songs-text'>Liked Songs</p>
-      <div className='main'>
-        {savedSongs}
-      </div>
+      <div>
+        <p className="liked-songs-text">Liked Songs</p>
+        <div className="main">{savedSongs}</div>
         <SideBar />
         <TopNavLibrary />
-        
-    </div>
+      </div>
     </div>
   );
 };

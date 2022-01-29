@@ -4,7 +4,6 @@ import "../Playlists/Playlists.css";
 import "./Search.css";
 
 const SearchPlaylists = ({ playlists, artist }) => {
-  console.log(artist);
   const playlistMap = playlists.map((list, index) => {
     if (index < 4) {
       return (
