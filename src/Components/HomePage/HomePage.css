@@ -133,6 +133,8 @@
 
 .recent-album-image {
   height: 170px;
+  box-shadow: 5px 5px 8px black;
+  border-radius: 5px;
 }
 
 .recent-track-name {

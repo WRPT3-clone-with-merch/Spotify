@@ -121,8 +121,8 @@ const Recommendations = () => {
 
   return (
     <div className="render">
-      <div className="render-maps">
         <h1 className="render-text">Suggested Songs</h1>
+      <div className="render-maps">
 
         {list}
       </div>

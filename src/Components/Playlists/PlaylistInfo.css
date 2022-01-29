@@ -11,6 +11,12 @@
   text-overflow: ellipsis;
   overflow: hidden;
   margin-left: 1vw;
+  border-radius: 5px;
+}
+
+.track-container:hover {
+  background-color: #463f3a;
+  cursor: pointer;
 }
 
 .track-main {

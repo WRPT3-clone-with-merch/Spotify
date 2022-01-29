@@ -8,6 +8,7 @@
   justify-content: center;
   border-radius: 2%;
   margin-bottom: 20px;
+  margin-right: 10px;
 }
 .render {
   margin-top: 35vh;
@@ -15,7 +16,8 @@
   width: 80vw;
   height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .img {
   height: 200px;
@@ -48,7 +50,7 @@
   flex-wrap: wrap;
   /* padding-top: 30%; */
   height: 60vh;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .sugggested-songs-info {
   background-color: #1b1a1a;
