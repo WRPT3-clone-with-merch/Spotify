@@ -32,6 +32,7 @@ app.use(
 
 app.use(express.json());
 
+app.use(express.static(`${__dirname}/../build`))
 
 var generateRandomString = function (length) {
   var text = "";
@@ -128,5 +129,6 @@ app.get('/auth/token', (req, res) => {
 
 app.get('/api/merch', productCtrl.getProducts);
 
+const port = process.env.SERVER_PORT || 3030;
 
-app.listen(SERVER_PORT, () => console.log(`${SERVER_PORT}`));
+app.listen(port, () => console.log(`${SERVER_PORT}`));
