@@ -1,19 +1,15 @@
 
 .saved-songs {
-  margin: 10px;
   background-color: #1b1a1a;
   height: 350px;
   width: 250px;
-  border-radius: 7px;
-  text-decoration: none;
-  color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-	flex-direction: column;
-  align-items: center;
+  border-radius: 2%;
+  margin-bottom: 20px;
 }
 
 .saved-songs:hover {
@@ -25,16 +21,21 @@
   font-size: 17px;
 }
 
+.liked-songs-text {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+}
+
 .main {
 	color: white;
   width: 78vw;
   display: flex;
   flex-direction: row;
   width: 80vw;
-  margin-left: 20vw;
   flex-wrap: wrap;
 	text-overflow: clip;
-  margin-left: 20vw;
   justify-content: flex-start;
 }
 
@@ -46,5 +47,24 @@
 }
 
 .liked-link {
-  text-decoration: none;
+  height: 350px;
+  width: 250px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2%;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.liked-songs-render {
+  margin-top: 35vh;
+  margin-left: 22vw;
+  width: 80vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
