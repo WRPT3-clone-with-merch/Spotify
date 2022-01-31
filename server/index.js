@@ -129,6 +129,6 @@ app.get('/auth/token', (req, res) => {
 
 app.get('/api/merch', productCtrl.getProducts);
 
-const port = process.env.SERVER_PORT || 3030;
+const port = process.env.SERVER_PORT || 5000;
 
 app.listen(port, () => console.log(`${SERVER_PORT}`));
