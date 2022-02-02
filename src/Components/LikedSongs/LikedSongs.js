@@ -45,7 +45,7 @@ const LikedSongsComponent = () => {
 
   return (
     <div>
-      <div>
+      <div className='liked-songs-render'>
         <p className="liked-songs-text">Liked Songs</p>
         <div className="main">{savedSongs}</div>
         <SideBar />
