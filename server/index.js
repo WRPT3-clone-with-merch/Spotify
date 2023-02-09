@@ -12,16 +12,6 @@ const app = express();
 const spotify_client_id = process.env.REACT_APP_CLIENT_ID;
 const spotify_client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
-massive({
-  connectionString: CONNECTION_STRING,
-  ssl: { rejectUnauthorized: false },
-})
-  .then((db) => {
-    app.set("db", db);
-    console.log("db connected");
-  })
-  .catch((err) => console.log(err));
-
 app.use(
   session({
     resave: true,
@@ -31,7 +21,7 @@ app.use(
   }));
 
 app.use(express.json());
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));
 
 
 var generateRandomString = function (length) {
